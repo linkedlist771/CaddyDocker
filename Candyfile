@@ -441,7 +441,11 @@ https://chat.qqyunsd.com {
 
 # HTTP配置
 http://chattest.qqyunsd.com {
-     replace "SoruxGPT 登录" "GPT 登录"
+    replace "SoruxGPT 登录" "GPT 登录"
+    replace "SoruxGPT 账号" "GPT 账号"
+    replace "SoruxGPT 密码" "GPT 密码"
+    replace "SoruxGPT" "GPT"
+    replace "soruxgpt" "gpt"
 
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
@@ -467,6 +471,10 @@ http://chattest.qqyunsd.com {
 }
 https://chattest.qqyunsd.com {
     replace "SoruxGPT 登录" "GPT 登录"
+    replace "SoruxGPT 账号" "GPT 账号"
+    replace "SoruxGPT 密码" "GPT 密码"
+    replace "SoruxGPT" "GPT"
+    replace "soruxgpt" "gpt"
 
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
