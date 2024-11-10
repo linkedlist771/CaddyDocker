@@ -444,6 +444,8 @@ http://chattest.qqyunsd.com {
     replace "SoruxGPT 登录" "GPT 登录"
     replace "SoruxGPT 账号" "GPT 账号"
     replace "SoruxGPT 密码" "GPT 密码"
+    replace "Hello, SoruxGPT!" "Hello, GPT!"
+    replace "default-mail@soruxgpt.com" "default-mail@gpt.com"
     # replace "SoruxGPT!" "GPT!"
     # replace "SoruxGPT.com" "GPT.com"
     # replace "soruxgpt.com" "gpt.com"
@@ -474,8 +476,8 @@ https://chattest.qqyunsd.com {
     replace "SoruxGPT 登录" "GPT 登录"
     replace "SoruxGPT 账号" "GPT 账号"
     replace "SoruxGPT 密码" "GPT 密码"
-    # replace "SoruxGPT!" "GPT!"
-    # replace "SoruxGPT.com" "GPT.com"
+    replace "Hello, SoruxGPT!" "Hello, GPT!"
+    replace "default-mail@soruxgpt.com" "default-mail@gpt.com"
     # replace "soruxgpt.com" "gpt.com"
 
     reverse_proxy {
