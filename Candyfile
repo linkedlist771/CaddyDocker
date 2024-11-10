@@ -446,6 +446,8 @@ http://chattest.qqyunsd.com {
     replace "SoruxGPT 密码" "GPT 密码"
     replace "Hello, SoruxGPT!" "Hello, GPT!"
     replace "default-mail@soruxgpt.com" "default-mail@gpt.com"
+    replace "By SoruxGPT.com User" "By GPT.com User"
+
     # replace "SoruxGPT!" "GPT!"
     # replace "SoruxGPT.com" "GPT.com"
     # replace "soruxgpt.com" "gpt.com"
@@ -478,7 +480,7 @@ https://chattest.qqyunsd.com {
     replace "SoruxGPT 密码" "GPT 密码"
     replace "Hello, SoruxGPT!" "Hello, GPT!"
     replace "default-mail@soruxgpt.com" "default-mail@gpt.com"
-    # replace "soruxgpt.com" "gpt.com"
+    replace "By SoruxGPT.com User" "By GPT.com User"
 
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
