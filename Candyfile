@@ -804,7 +804,7 @@ https://shop.liuli.585dg.com {
 
 
 # HTTP配置
-http://shoptest.liuli.585dg.com {
+http://shoptest.585dg.com {
     reverse_proxy http://54.254.143.80:9000 {
         header_up Host {host}
         header_up Upgrade {header.Upgrade}
@@ -815,7 +815,7 @@ http://shoptest.liuli.585dg.com {
         flush_interval -1
     }
 }
-https://shoptest.liuli.585dg.com {
+https://shoptest.585dg.com {
     reverse_proxy http://54.254.143.80:9000 {
         header_up Host {host}
         header_up Upgrade {header.Upgrade}
