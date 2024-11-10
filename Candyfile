@@ -434,6 +434,58 @@ https://chat.qqyunsd.com {
     # }
 }
 
+# chattest
+
+
+# HTTP配置
+http://chattest.qqyunsd.com {
+ 
+    reverse_proxy {
+        to https://liuli-chatgpt.soruxgpt.com 
+        header_up Host liuli-chatgpt.soruxgpt.com
+        transport http {
+            tls
+            tls_insecure_skip_verify
+        }
+    }
+    #   @html {
+    #     header Content-Type *text/html*
+    # }
+    # response @html {
+    #     header -Content-Length
+    #     replace "SoruxGPT 登录" "GPT 登录"
+    # }
+
+    #   response_modifier {
+    #     # 替换响应体中的文本
+    #     replace "SoruxGPT 登录" "GPT 登录"
+
+    # }
+}
+https://chattest.qqyunsd.com {
+
+    reverse_proxy {
+        to https://liuli-chatgpt.soruxgpt.com 
+        header_up Host liuli-chatgpt.soruxgpt.com
+        transport http {
+            tls
+            tls_insecure_skip_verify
+        }
+    }
+    #   @html {
+    #     header Content-Type *text/html*
+    # }
+    # response @html {
+    #     header -Content-Length
+    #     replace "SoruxGPT 登录" "GPT 登录"
+    # }
+
+    #   response_modifier {
+    #     # 替换响应体中的文本
+    #     replace "SoruxGPT 登录" "GPT 登录"
+
+    # }
+}
 
 # HTTP配置
 http://shop.qqyunsd.com {

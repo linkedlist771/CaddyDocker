@@ -1,7 +1,7 @@
 version: '3'
 services:
   candy:
-    image: caddy:latest
+    image: llinkedlist/caddy-replace:latest
     container_name: candy-proxy
     ports:
       - "80:80"
