@@ -111,6 +111,7 @@ poe.585dg.com {
 }
 
 
+
 # 5. claude.liuli.arelay.com
 claude.liuli.arelay.com {
     #tls /etc/letsencrypt/live/claude.liuli.mmwcy.cn/fullchain.pem /etc/letsencrypt/live/claude.liuli.mmwcy.cn/privkey.pem
@@ -580,6 +581,43 @@ https://poe.qqyunsd.com {
         health_timeout 5s
     }
 }
+
+
+http://poetest.qqyunsd.com {
+    reverse_proxy http://54.254.143.80:1441 {
+      header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+        header_up X-Forwarded-For {remote_host}
+        header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
+        header_up CF-Ray {http.request.header.CF-Ray}
+        header_up Upgrade {header.Upgrade}
+        header_up Connection "upgrade"
+        transport http {
+            versions h1
+        }
+        flush_interval -1
+        health_timeout 5s
+    }
+}
+
+https://poetest.qqyunsd.com {
+    reverse_proxy http://54.254.143.80:1441 {
+      header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+        header_up X-Forwarded-For {remote_host}
+        header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
+        header_up CF-Ray {http.request.header.CF-Ray}
+        header_up Upgrade {header.Upgrade}
+        header_up Connection "upgrade"
+        transport http {
+            versions h1
+        }
+        flush_interval -1
+        health_timeout 5s
+    }
+}
 # clauai.qqyunsd.com {
 #     # 添加日志便于调试
 #     # log {
@@ -764,6 +802,30 @@ https://shop.liuli.585dg.com {
     }
 }
 
+
+# HTTP配置
+http://shoptest.liuli.585dg.com {
+    reverse_proxy http://54.254.143.80:9000 {
+        header_up Host {host}
+        header_up Upgrade {header.Upgrade}
+        header_up Connection "upgrade"
+        transport http {
+            versions h1
+        }
+        flush_interval -1
+    }
+}
+https://shoptest.liuli.585dg.com {
+    reverse_proxy http://54.254.143.80:9000 {
+        header_up Host {host}
+        header_up Upgrade {header.Upgrade}
+        header_up Connection "upgrade"
+        transport http {
+            versions h1
+        }
+        flush_interval -1
+    }
+}
 
 
 
