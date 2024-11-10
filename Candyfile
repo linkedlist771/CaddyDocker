@@ -1,4 +1,6 @@
 {
+    order replace after encode
+
     # Global options
     auto_https disable_redirects
     # 可选: 配置邮箱用于 Let's Encrypt 通知
@@ -439,7 +441,8 @@ https://chat.qqyunsd.com {
 
 # HTTP配置
 http://chattest.qqyunsd.com {
- 
+     replace "SoruxGPT 登录" "GPT 登录"
+
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
         header_up Host liuli-chatgpt.soruxgpt.com
@@ -463,6 +466,7 @@ http://chattest.qqyunsd.com {
     # }
 }
 https://chattest.qqyunsd.com {
+    replace "SoruxGPT 登录" "GPT 登录"
 
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
