@@ -214,13 +214,14 @@ claude2.ai0.cn {
 
 
 chattest.585dg.com {
+    redir / https://{host}{uri} permanent
+
     replace "SoruxGPT 登录" "GPT 登录"
     replace "SoruxGPT 账号" "GPT 账号"
     replace "SoruxGPT 密码" "GPT 密码"
     replace "Hello, SoruxGPT!" "Hello, GPT!"
     replace "default-mail@soruxgpt.com" "email"
     replace "SoruxGPT.com User" "User"
-    redir / https://{host}{uri} permanent
 
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
