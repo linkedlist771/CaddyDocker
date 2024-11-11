@@ -1,5 +1,5 @@
 {
-    # order replace after encode
+    order replace after encode
 
     # Global options
     auto_https disable_redirects
