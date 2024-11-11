@@ -233,6 +233,8 @@ https://chattest.585dg.com {
             tls
             tls_insecure_skip_verify
         }
+                        flush_interval -1
+    buffer_requests off
     }
 }
 
