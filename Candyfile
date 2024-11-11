@@ -212,10 +212,13 @@ claude2.ai0.cn {
 
 # 8.1 this is a newly created domain https://chat.585dg.com/
 
+# HTTP 配置
+http://chattest.585dg.com {
+    redir https://{host}{uri} permanent
+}
 
-chattest.585dg.com {
-    redir / https://{host}{uri} permanent
-
+# HTTPS 配置
+https://chattest.585dg.com {
     replace "SoruxGPT 登录" "GPT 登录"
     replace "SoruxGPT 账号" "GPT 账号"
     replace "SoruxGPT 密码" "GPT 密码"
@@ -231,8 +234,8 @@ chattest.585dg.com {
             tls_insecure_skip_verify
         }
     }
-
 }
+
 
 
 # http://chattest.585dg.com {
