@@ -219,36 +219,81 @@ http://chattest.585dg.com {
     redir https://{host}{uri} permanent
 }
 
+# # HTTPS 配置
+# https://chattest.585dg.com {
+#     replace "SoruxGPT 登录" "GPT 登录"
+#     replace "SoruxGPT 账号" "GPT 账号"
+#     replace "SoruxGPT 密码" "GPT 密码"
+#     replace "Hello, SoruxGPT!" "Hello, GPT!"
+#     replace "default-mail@soruxgpt.com" "email"
+#     replace "SoruxGPT.com User" "User"
+
+#     reverse_proxy {
+#         to https://liuli-chatgpt.soruxgpt.com 
+#         header_up Host liuli-chatgpt.soruxgpt.com
+
+#         flush_interval -1
+#         transport http {
+#             tls
+#             tls_insecure_skip_verify
+#             versions h1
+
+#         }
+
+#     }
+# }
+
+
 # HTTPS 配置
 https://chattest.585dg.com {
     replace "SoruxGPT 登录" "GPT 登录"
-    replace "SoruxGPT 账号" "GPT 账号"
+    replace "SoruxGPT 账号" "GPT 账号" 
     replace "SoruxGPT 密码" "GPT 密码"
     replace "Hello, SoruxGPT!" "Hello, GPT!"
     replace "default-mail@soruxgpt.com" "email"
     replace "SoruxGPT.com User" "User"
 
     reverse_proxy {
-        to https://liuli-chatgpt.soruxgpt.com 
+        to https://liuli-chatgpt.soruxgpt.com
         header_up Host liuli-chatgpt.soruxgpt.com
-         header_up Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate"
-        header_up Pragma "no-cache"
-        header_up Expires "0"
-               # 修改后端返回的响应头
-        header_down Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate"
-        header_down Pragma "no-cache"
-        header_down Expires "0"
-        flush_interval -1
+        
+        # 添加WebSocket支持
+        header_up Upgrade {http.upgrade}
+        header_up Connection {http.connection}
+        
+        # 配置流式传输
+        flush_interval 1ms
+        
         transport http {
             tls
             tls_insecure_skip_verify
-            versions h1
-
+            versions h1 h2c
+            
+            # 增加读写超时时间
+            read_timeout  5m
+            write_timeout 5m
+            dial_timeout  10s
         }
-
+    }
+    
+    # 允许WebSocket连接
+    @websocket {
+        header Connection *Upgrade*
+        header Upgrade websocket
+    }
+    
+    # 配置SSE
+    header {
+        # 允许跨域
+        Access-Control-Allow-Origin *
+        # 允许SSE所需的头部
+        Access-Control-Allow-Headers Content-Type,Cache-Control
+        # 允许流式传输
+        Cache-Control no-cache
+        Content-Type text/event-stream
+        Connection keep-alive
     }
 }
-
 
 
 # http://chattest.585dg.com {
