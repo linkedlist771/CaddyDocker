@@ -230,8 +230,8 @@ https://chattest.585dg.com {
 
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
-        # header_up Host liuli-chatgpt.soruxgpt.com
-        header_up Host {host} 
+        header_up Host liuli-chatgpt.soruxgpt.com
+        # header_up Host {host} 
         # 你能做什么
         header_up Upgrade {header.Upgrade}
         header_up Connection "upgrade"
