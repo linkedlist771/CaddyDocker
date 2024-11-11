@@ -229,8 +229,8 @@ https://chattest.585dg.com {
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
         header_up Host liuli-chatgpt.soruxgpt.com
-        buffer_requests off
-        buffer_responses off
+        flush_interval -1  # 改为 -1 来支持流式输出
+
         transport http {
             tls
             tls_insecure_skip_verify
