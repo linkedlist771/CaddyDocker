@@ -479,8 +479,8 @@ http://chattest.qqyunsd.com {
             tls_insecure_skip_verify
         }
             # 添加streaming相关配置
-    flush_interval -1
-    buffer_requests off
+    # flush_interval -1
+    # buffer_requests off
     }
 }
 https://chattest.qqyunsd.com {
@@ -499,8 +499,8 @@ https://chattest.qqyunsd.com {
             tls_insecure_skip_verify
         }
             # 添加streaming相关配置
-    flush_interval -1
-    buffer_requests off
+    # flush_interval -1
+    # buffer_requests off
     }
 }
 
