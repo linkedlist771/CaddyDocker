@@ -243,7 +243,6 @@ http://chattest.585dg.com {
 #     }
 # }
 
-
 # HTTPS 配置
 https://chattest.585dg.com {
     replace "SoruxGPT 登录" "GPT 登录"
@@ -257,43 +256,49 @@ https://chattest.585dg.com {
         to https://liuli-chatgpt.soruxgpt.com
         header_up Host liuli-chatgpt.soruxgpt.com
         
-        # 添加WebSocket支持
-        header_up Upgrade {http.upgrade}
-        header_up Connection {http.connection}
-        
-        # 配置流式传输
+        # 关键配置：启用流式传输
+        # streaming
         flush_interval 1ms
+        buffer_requests off
+        buffer_responses off
+        
+        # 保持长连接
+        header_up Connection "keep-alive"
+        header_down Connection "keep-alive"
+        
+        # 确保不会压缩响应
+        header_down Content-Encoding identity
         
         transport http {
             tls
             tls_insecure_skip_verify
             versions h1 h2c
             
-            # 增加读写超时时间
+            # 延长超时时间
             read_timeout  5m
             write_timeout 5m
             dial_timeout  10s
+            
+            # 禁用压缩
+            compression off
         }
     }
     
-    # 允许WebSocket连接
-    @websocket {
-        header Connection *Upgrade*
-        header Upgrade websocket
-    }
-    
-    # 配置SSE
+    # SSE 相关头部
     header {
-        # 允许跨域
         Access-Control-Allow-Origin *
-        # 允许SSE所需的头部
-        Access-Control-Allow-Headers Content-Type,Cache-Control
-        # 允许流式传输
+        Access-Control-Allow-Methods "GET, POST, OPTIONS"
+        Access-Control-Allow-Headers "*"
+        Access-Control-Allow-Credentials true
+        Cache-Control no-transform
         Cache-Control no-cache
+        Cache-Control private
+        X-Accel-Buffering no
         Content-Type text/event-stream
         Connection keep-alive
     }
 }
+
 
 
 # http://chattest.585dg.com {
