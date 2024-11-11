@@ -446,12 +446,8 @@ http://chattest.qqyunsd.com {
     replace "SoruxGPT 账号" "GPT 账号"
     replace "SoruxGPT 密码" "GPT 密码"
     replace "Hello, SoruxGPT!" "Hello, GPT!"
-    replace "default-mail@soruxgpt.com" "default-mail@gpt.com"
-    replace "SoruxGPT.com User" "GPT.com User"
-
-    # replace "SoruxGPT!" "GPT!"
-    # replace "SoruxGPT.com" "GPT.com"
-    # replace "soruxgpt.com" "gpt.com"
+    replace "default-mail@soruxgpt.com" "email"
+    replace "SoruxGPT.com User" "User"
 
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
@@ -461,27 +457,14 @@ http://chattest.qqyunsd.com {
             tls_insecure_skip_verify
         }
     }
-    #   @html {
-    #     header Content-Type *text/html*
-    # }
-    # response @html {
-    #     header -Content-Length
-    #     replace "SoruxGPT 登录" "GPT 登录"
-    # }
-
-    #   response_modifier {
-    #     # 替换响应体中的文本
-    #     replace "SoruxGPT 登录" "GPT 登录"
-
-    # }
 }
 https://chattest.qqyunsd.com {
     replace "SoruxGPT 登录" "GPT 登录"
     replace "SoruxGPT 账号" "GPT 账号"
     replace "SoruxGPT 密码" "GPT 密码"
     replace "Hello, SoruxGPT!" "Hello, GPT!"
-    replace "default-mail@soruxgpt.com" "default-mail@gpt.com"
-    replace "SoruxGPT.com User" "GPT.com User"
+    replace "default-mail@soruxgpt.com" "email"
+    replace "SoruxGPT.com User" "User"
 
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
@@ -491,19 +474,6 @@ https://chattest.qqyunsd.com {
             tls_insecure_skip_verify
         }
     }
-    #   @html {
-    #     header Content-Type *text/html*
-    # }
-    # response @html {
-    #     header -Content-Length
-    #     replace "SoruxGPT 登录" "GPT 登录"
-    # }
-
-    #   response_modifier {
-    #     # 替换响应体中的文本
-    #     replace "SoruxGPT 登录" "GPT 登录"
-
-    # }
 }
 
 # HTTP配置
