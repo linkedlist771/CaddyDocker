@@ -213,7 +213,7 @@ claude2.ai0.cn {
 # 8.1 this is a newly created domain https://chat.585dg.com/
 
 
-chat.585dg.com {
+chattest.585dg.com {
     # Caddy会自动申请和管理证书，不需要手动指定证书路径
     @acme_challenge {
         path /.well-known/acme-challenge/*
@@ -222,7 +222,12 @@ chat.585dg.com {
         root * /var/www/html
         file_server
     }
-
+    replace "SoruxGPT 登录" "GPT 登录"
+    replace "SoruxGPT 账号" "GPT 账号"
+    replace "SoruxGPT 密码" "GPT 密码"
+    replace "Hello, SoruxGPT!" "Hello, GPT!"
+    replace "default-mail@soruxgpt.com" "email"
+    replace "SoruxGPT.com User" "User"
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
         header_up Host liuli-chatgpt.soruxgpt.com
@@ -440,7 +445,7 @@ https://chat.qqyunsd.com {
 # chattest
 
 
-HTTP配置
+# HTTP配置
 http://chattest.qqyunsd.com {
     replace "SoruxGPT 登录" "GPT 登录"
     replace "SoruxGPT 账号" "GPT 账号"
