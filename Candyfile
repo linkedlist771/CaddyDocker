@@ -229,12 +229,12 @@ https://chattest.585dg.com {
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
         header_up Host liuli-chatgpt.soruxgpt.com
+        flush_interval 0s
         transport http {
             tls
             tls_insecure_skip_verify
         }
-        # flush_interval -1
-        # buffer_requests off
+
     }
 }
 
