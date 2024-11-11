@@ -231,22 +231,14 @@ https://chattest.585dg.com {
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
         header_up Host liuli-chatgpt.soruxgpt.com
-        # header_up Host {host} 
-        # 你能做什么
-        # header_up Upgrade {header.Upgrade}
-        # header_up Connection "upgrade"
-        # flush_interval -1
-        # header_up Accept text/event-stream
-        # header_up Cache-Control no-cache
-        # header_up Connection keep-alive
-    # 流式传输设置
-    flush_interval -1
-    # streaming_response true  # 启用流式响应
-            # buffer_responses off  # 禁用响应缓冲
-
-        # flush_interval -1  # 启用低延迟模式，完全禁用响应缓冲
-        # stream_timeout 24h  # 设置流式请求的超时时间
-        # stream_close_delay 5m  # 配置重载时不立即关闭连接
+         header_up Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate"
+        header_up Pragma "no-cache"
+        header_up Expires "0"
+               # 修改后端返回的响应头
+        header_down Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate"
+        header_down Pragma "no-cache"
+        header_down Expires "0"
+        flush_interval -1
         transport http {
             tls
             tls_insecure_skip_verify
