@@ -259,8 +259,8 @@ https://chattest.585dg.com {
         # 关键配置：启用流式传输
         # streaming
         flush_interval 1ms
-        buffer_requests off
-        buffer_responses off
+        # buffer_requests off
+        # buffer_responses off
         
         # 保持长连接
         header_up Connection "keep-alive"
