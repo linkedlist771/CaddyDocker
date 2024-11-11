@@ -220,6 +220,8 @@ chattest.585dg.com {
     replace "Hello, SoruxGPT!" "Hello, GPT!"
     replace "default-mail@soruxgpt.com" "email"
     replace "SoruxGPT.com User" "User"
+    redir / https://{host}{uri} permanent
+
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
         header_up Host liuli-chatgpt.soruxgpt.com
