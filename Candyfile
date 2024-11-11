@@ -233,14 +233,22 @@ https://chattest.585dg.com {
         header_up Host liuli-chatgpt.soruxgpt.com
         # header_up Host {host} 
         # 你能做什么
-        header_up Upgrade {header.Upgrade}
-        header_up Connection "upgrade"
+    # SSE必要的header设置
+        header_up Accept text/event-stream
+        header_up Cache-Control no-cache
+        header_up Connection keep-alive
         # flush_interval -1
         # header_up Accept text/event-stream
         # header_up Cache-Control no-cache
         # header_up Connection keep-alive
-        flush_interval -1  # 启用低延迟模式，完全禁用响应缓冲
-        # buffer_responses off  # 禁用响应缓冲
+   header_up Upgrade {header.Upgrade}
+    header_up Connection "upgrade"
+    
+    # 流式传输设置
+    flush_interval -1
+    streaming_response true  # 启用流式响应
+    buffer_responses off     # 禁用响应缓冲
+            # buffer_responses off  # 禁用响应缓冲
 
         # flush_interval -1  # 启用低延迟模式，完全禁用响应缓冲
         # stream_timeout 24h  # 设置流式请求的超时时间
