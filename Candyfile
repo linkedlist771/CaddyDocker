@@ -264,9 +264,8 @@ https://chattest.585dg.com {
         reverse_proxy https://liuli-chatgpt.soruxgpt.com {
             header_up Host liuli-chatgpt.soruxgpt.com
             flush_interval -1
-            streaming
             buffer_requests off
-            buffer_responses off  #backend-api/conversation 这俩一设置全局的我的网页都无法访问了， 所以我需要只对这个路由生效 /backend-api/conversation
+            buffer_responses off
 
 
             transport http {
