@@ -213,7 +213,7 @@ claude2.ai0.cn {
 # 8.1 this is a newly created domain https://chat.585dg.com/
 
 
-https://chattest.585dg.com {
+chattest.585dg.com {
     replace "SoruxGPT 登录" "GPT 登录"
     replace "SoruxGPT 账号" "GPT 账号"
     replace "SoruxGPT 密码" "GPT 密码"
@@ -232,23 +232,23 @@ https://chattest.585dg.com {
 }
 
 
-http://chattest.585dg.com {
-    replace "SoruxGPT 登录" "GPT 登录"
-    replace "SoruxGPT 账号" "GPT 账号"
-    replace "SoruxGPT 密码" "GPT 密码"
-    replace "Hello, SoruxGPT!" "Hello, GPT!"
-    replace "default-mail@soruxgpt.com" "email"
-    replace "SoruxGPT.com User" "User"
-    reverse_proxy {
-        to https://liuli-chatgpt.soruxgpt.com 
-        header_up Host liuli-chatgpt.soruxgpt.com
-        transport http {
-            tls
-            tls_insecure_skip_verify
-        }
-    }
+# http://chattest.585dg.com {
+#     replace "SoruxGPT 登录" "GPT 登录"
+#     replace "SoruxGPT 账号" "GPT 账号"
+#     replace "SoruxGPT 密码" "GPT 密码"
+#     replace "Hello, SoruxGPT!" "Hello, GPT!"
+#     replace "default-mail@soruxgpt.com" "email"
+#     replace "SoruxGPT.com User" "User"
+#     reverse_proxy {
+#         to https://liuli-chatgpt.soruxgpt.com 
+#         header_up Host liuli-chatgpt.soruxgpt.com
+#         transport http {
+#             tls
+#             tls_insecure_skip_verify
+#         }
+#     }
 
-}
+# }
 
 
 
