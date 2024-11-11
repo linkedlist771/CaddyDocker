@@ -231,6 +231,10 @@ https://chattest.585dg.com {
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
         header_up Host liuli-chatgpt.soruxgpt.com
+        # header_up Host {host}
+        header_up Upgrade {header.Upgrade}
+        header_up Connection "upgrade"
+        # flush_interval -1
         # header_up Accept text/event-stream
         # header_up Cache-Control no-cache
         # header_up Connection keep-alive
@@ -243,6 +247,8 @@ https://chattest.585dg.com {
         transport http {
             tls
             tls_insecure_skip_verify
+            versions h1
+
         }
 
     }
