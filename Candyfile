@@ -240,10 +240,10 @@ https://chattest.585dg.com {
         # flush_interval -1  # 启用低延迟模式，完全禁用响应缓冲
         # stream_timeout 24h  # 设置流式请求的超时时间
         # stream_close_delay 5m  # 配置重载时不立即关闭连接
-        # transport http {
-        #     tls
-        #     tls_insecure_skip_verify
-        # }
+        transport http {
+            # tls
+            tls_insecure_skip_verify
+        }
 
     }
 }
