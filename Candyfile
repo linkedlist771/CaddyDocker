@@ -230,7 +230,7 @@ https://chattest.585dg.com {
 
     reverse_proxy {
         to https://liuli-chatgpt.soruxgpt.com 
-        # header_up Host liuli-chatgpt.soruxgpt.com
+        header_up Host liuli-chatgpt.soruxgpt.com
         # header_up Accept text/event-stream
         # header_up Cache-Control no-cache
         # header_up Connection keep-alive
