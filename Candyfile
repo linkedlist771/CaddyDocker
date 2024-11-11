@@ -1,6 +1,5 @@
 {
-    order replace after encode
-
+    order replace before encode
     # Global options
     auto_https disable_redirects
     # 可选: 配置邮箱用于 Let's Encrypt 通知
