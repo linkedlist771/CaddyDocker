@@ -9,7 +9,18 @@ services:
     volumes:
       - ./Candyfile:/etc/caddy/Caddyfile
       - /etc/letsencrypt:/etc/letsencrypt:ro
-      - ./caddy_data:/data  # 将 /data 目录映射到主机的 ./caddy_data 目录
+      - ./caddy_data:/data
       - /var/www/html:/var/www/html
       - /etc/nginx/dist:/etc/nginx/dist
-    restart: unless-stopped
+    restart: always
+    labels:
+      - "autoheal=true"
+    healthcheck:
+      test: ["CMD", "caddy", "version"]  # 只检查 caddy 是否可以响应命令
+      # 或者使用
+      # test: ["CMD", "curl", "-f", "http://localhost:2019/config/"]  # 检查 Caddy 的 admin 接口
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      - autoheal
