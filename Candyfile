@@ -229,7 +229,7 @@ http://chattest.585dg.com {
 #     replace "SoruxGPT.com User" "User"
 
 #     reverse_proxy {
-#         to https://liuli-chatgpt.soruxgpt.com 
+#         to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
 #         header_up Host liuli-chatgpt.soruxgpt.com
 
 #         flush_interval -1
@@ -261,7 +261,7 @@ https://chattest.585dg.com {
         path /backend-api/conversation
     }
     handle @conversation {
-        reverse_proxy https://liuli-chatgpt.soruxgpt.com {
+        reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 {
             header_up Host liuli-chatgpt.soruxgpt.com
             flush_interval -1
             stream_timeout 24h  
@@ -276,7 +276,7 @@ https://chattest.585dg.com {
 
     # 默认反向代理配置
     handle {
-        reverse_proxy https://liuli-chatgpt.soruxgpt.com {
+        reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 {
             header_up Host liuli-chatgpt.soruxgpt.com
             transport http {
                 tls
@@ -302,7 +302,7 @@ https://chattest.585dg.com {
 #     replace "default-mail@soruxgpt.com" "email"
 #     replace "SoruxGPT.com User" "User"
 #     reverse_proxy {
-#         to https://liuli-chatgpt.soruxgpt.com 
+#         to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
 #         header_up Host liuli-chatgpt.soruxgpt.com
 #         transport http {
 #             tls
@@ -469,7 +469,7 @@ https://clauai.qqyunsd.com {
 http://chat.qqyunsd.com {
  
     reverse_proxy {
-        to https://liuli-chatgpt.soruxgpt.com 
+        to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
         header_up Host liuli-chatgpt.soruxgpt.com
         transport http {
             tls
@@ -493,7 +493,7 @@ http://chat.qqyunsd.com {
 https://chat.qqyunsd.com {
 
     reverse_proxy {
-        to https://liuli-chatgpt.soruxgpt.com 
+        to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
         header_up Host liuli-chatgpt.soruxgpt.com
         transport http {
             tls
@@ -528,7 +528,7 @@ http://chattest.qqyunsd.com {
     replace "SoruxGPT.com User" "User"
 
     reverse_proxy {
-        to https://liuli-chatgpt.soruxgpt.com 
+        to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
         header_up Host liuli-chatgpt.soruxgpt.com
         transport http {
             tls
@@ -551,7 +551,7 @@ https://chattest.qqyunsd.com {
     replace "SoruxGPT.com User" "User"
 
     reverse_proxy {
-        to https://liuli-chatgpt.soruxgpt.com 
+        to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
         header_up Host liuli-chatgpt.soruxgpt.com
         transport http {
             tls
@@ -573,7 +573,7 @@ https://chattest.qqyunsd.com {
 #     replace "SoruxGPT.com User" "User"
 
 #     reverse_proxy {
-#         to https://liuli-chatgpt.soruxgpt.com 
+#         to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
 #         header_up Host liuli-chatgpt.soruxgpt.com
 #         transport http {
 #             tls
