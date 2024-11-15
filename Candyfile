@@ -275,11 +275,26 @@ http://chattest.585dg.com {
 # }
 
 chattest.585dg.com {
+        # 文本替换配置
+    replace "SoruxGPT 登录" "GPT 登录"
+    replace "SoruxGPT 账号" "GPT 账号"
+    replace "SoruxGPT 密码" "GPT 密码"
+    replace "Hello, SoruxGPT!" "Hello, GPT!"
+    replace "default-mail@soruxgpt.com" "email"
+    replace "SoruxGPT.com User" "User"
+    replace "Powered By SoruxGPT" "Powered By GPT"
+    replace "前往 SoruxGPT 注册" "前往 GPT 注册"
+
+
+
     reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 {
         header_up Host {http.reverse_proxy.upstream.hostport}
     }
 }
 
+    # reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 {
+    #     header_up Host {http.reverse_proxy.upstream.hostport}
+    # }
 
 
 # http://chattest.585dg.com {
