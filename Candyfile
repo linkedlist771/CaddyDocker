@@ -233,78 +233,28 @@ http://chattest.585dg.com {
     redir https://{host}{uri} permanent
 }
 
-# # HTTPS 配置
-# https://chattest.585dg.com {
-#     replace "SoruxGPT 登录" "GPT 登录"
-#     replace "SoruxGPT 账号" "GPT 账号"
-#     replace "SoruxGPT 密码" "GPT 密码"
-#     replace "Hello, SoruxGPT!" "Hello, GPT!"
-#     replace "default-mail@soruxgpt.com" "email"
-#     replace "SoruxGPT.com User" "User"
-
-#     reverse_proxy {
-#         to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
-#         header_up Host liuli-chatgpt.soruxgpt.com
-
-#         flush_interval -1
-#         transport http {
-#             tls
-#             tls_insecure_skip_verify
-#             versions h1
-
-#         }
-
-#     }
-# }
-
-# HTTPS 配置
-# HTTPS 配置
-# https://chattest.585dg.com {
-#     # 文本替换配置
-#     replace "SoruxGPT 登录" "GPT 登录"
-#     replace "SoruxGPT 账号" "GPT 账号"
-#     replace "SoruxGPT 密码" "GPT 密码"
-#     replace "Hello, SoruxGPT!" "Hello, GPT!"
-#     replace "default-mail@soruxgpt.com" "email"
-#     replace "SoruxGPT.com User" "User"
-#     replace "Powered By SoruxGPT" "Powered By GPT"
-#     replace "前往 SoruxGPT 注册" "前往 GPT 注册"
-
-
-
-#     # 默认反向代理配置
-#     # handle {
-#     #     reverse_proxy https://liuli-chatgpt.soruxgpt.com {
-#     #         header_up Host liuli-chatgpt.soruxgpt.com
-#     #         transport http {
-#     #             tls_insecure_skip_verify
-#     #             versions h1
-#     #         }
-#     #     }
-#     # }
-
-#     reverse_proxy {
-#         to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
-#     }
-# }
-
 chattest.585dg.com {
-    # 文本替换配置
-    # replace "SoruxGPT 登录" "GPT 登录"
-    # replace "SoruxGPT 账号" "GPT 账号"
-    # replace "SoruxGPT 密码" "GPT 密码"
-    # replace "Hello, SoruxGPT!" "Hello, GPT!"
-    # replace "default-mail@soruxgpt.com" "email"
-    # replace "SoruxGPT.com User" "User"
-    # replace "Powered By SoruxGPT" "Powered By GPT"
-    # replace "前往 SoruxGPT 注册" "前往 GPT 注册"
+    @notapi {
+        not path /backend-api/conversation
+    }
 
-
+    replace @notapi {
+        "SoruxGPT 登录" "GPT 登录"
+        "SoruxGPT 账号" "GPT 账号"
+        "SoruxGPT 密码" "GPT 密码"
+        "Hello, SoruxGPT!" "Hello, GPT!"
+        "default-mail@soruxgpt.com" "email"
+        "SoruxGPT.com User" "User"
+        "Powered By SoruxGPT" "Powered By GPT"
+        "前往 SoruxGPT 注册" "前往 GPT 注册"
+    }
 
     reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 {
         header_up Host {http.reverse_proxy.upstream.hostport}
+        header_up Accept-Encoding identity  # 禁用压缩以确保替换能正常工作
     }
 }
+
 
     # reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 {
     #     header_up Host {http.reverse_proxy.upstream.hostport}
