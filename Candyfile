@@ -448,60 +448,6 @@ https://clauai.qqyunsd.com {
 
 
 
-
-# HTTP配置
-http://chat.qqyunsd.com {
- 
-    reverse_proxy {
-        to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
-        header_up Host liuli-chatgpt.soruxgpt.com
-        transport http {
-            # tls
-            tls_insecure_skip_verify
-        }
-    }
-    #   @html {
-    #     header Content-Type *text/html*
-    # }
-    # response @html {
-    #     header -Content-Length
-    #     replace "SoruxGPT 登录" "GPT 登录"
-    # }
-
-    #   response_modifier {
-    #     # 替换响应体中的文本
-    #     replace "SoruxGPT 登录" "GPT 登录"
-
-    # }
-}
-https://chat.qqyunsd.com {
-
-    reverse_proxy {
-        to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
-        header_up Host liuli-chatgpt.soruxgpt.com
-        transport http {
-            # tls
-            tls_insecure_skip_verify
-        }
-    }
-    #   @html {
-    #     header Content-Type *text/html*
-    # }
-    # response @html {
-    #     header -Content-Length
-    #     replace "SoruxGPT 登录" "GPT 登录"
-    # }
-
-    #   response_modifier {
-    #     # 替换响应体中的文本
-    #     replace "SoruxGPT 登录" "GPT 登录"
-
-    # }
-}
-
-# chattest
-
-
 # HTTP配置
 http://chattest.qqyunsd.com {
     replace "SoruxGPT 登录" "GPT 登录"
