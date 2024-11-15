@@ -279,7 +279,7 @@ https://chattest.585dg.com {
         reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 {
             header_up Host liuli-chatgpt.soruxgpt.com
             transport http {
-                tls
+                # tls
                 tls_insecure_skip_verify
                 versions h1
             }
@@ -537,6 +537,7 @@ http://chattest.qqyunsd.com {
     flush_interval -1
     }
 }
+
 https://chattest.qqyunsd.com {
     replace "SoruxGPT 登录" "GPT 登录"
     replace "SoruxGPT 账号" "GPT 账号"
