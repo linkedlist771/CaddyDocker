@@ -256,27 +256,11 @@ https://chattest.585dg.com {
     replace "Powered By SoruxGPT" "Powered By GPT"
     replace "前往 SoruxGPT 注册" "前往 GPT 注册"
 
-    # 特定路由配置
-    @conversation {
-        path /backend-api/conversation
-    }
-    handle @conversation {
-        reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 {
-            header_up Host liuli-chatgpt.soruxgpt.com
-            flush_interval -1
-            stream_timeout 24h  
-            stream_close_delay 5m
 
-            transport http {
-                tls_insecure_skip_verify
-                versions h1
-            }
-        }
-    }
 
     # 默认反向代理配置
     handle {
-        reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 {
+        reverse_proxy https://liuli-chatgpt.soruxgpt.com {
             header_up Host liuli-chatgpt.soruxgpt.com
             transport http {
                 # tls
