@@ -11,8 +11,18 @@
 
 # ACME challenge handling for HTTP
 :80 {
-    root * /var/www/html
-    file_server
+    # 定义一个匹配器，匹配所有不包含 /backend-api/conversation 的请求
+    @applyReplace not path /backend-api/conversation
+
+    # 对匹配到的请求应用 replace 指令
+    replace @applyReplace {
+        "default-mail@soruxgpt.com" "email"
+        "SoruxGPT.com User" "User"
+        "Powered By SoruxGPT" "Powered By GPT"
+        "前往 SoruxGPT 注册" "前往 GPT 注册"
+    }
+
+    # 你的其他配置...
 }
 
 # 1. claude3.ucas.life
