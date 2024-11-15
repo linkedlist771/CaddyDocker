@@ -456,7 +456,7 @@ http://chat.qqyunsd.com {
         to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
         header_up Host liuli-chatgpt.soruxgpt.com
         transport http {
-            tls
+            # tls
             tls_insecure_skip_verify
         }
     }
@@ -480,7 +480,7 @@ https://chat.qqyunsd.com {
         to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
         header_up Host liuli-chatgpt.soruxgpt.com
         transport http {
-            tls
+            # tls
             tls_insecure_skip_verify
         }
     }
