@@ -16,14 +16,14 @@ services:
     labels:
       - "autoheal=true"
     healthcheck:
-      test: ["CMD", "caddy", "version"]  # 只检查 caddy 是否可以响应命令
-      # 或者使用
-      # test: ["CMD", "curl", "-f", "http://localhost:2019/config/"]  # 检查 Caddy 的 admin 接口
+      test: ["CMD", "caddy", "version"]
       interval: 30s
       timeout: 10s
       retries: 3
     depends_on:
       - autoheal
+    networks:
+      - caddy
       
   autoheal:
     image: willfarrell/autoheal:latest
@@ -38,3 +38,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - caddy
+
+networks:
+  caddy:
+    driver: bridge
