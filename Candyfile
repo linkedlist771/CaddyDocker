@@ -529,17 +529,12 @@ http://chattest.qqyunsd.com {
 
     reverse_proxy {
         to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
-        header_up Host liuli-chatgpt.soruxgpt.com
+        # header_up Host liuli-chatgpt.soruxgpt.com
         transport http {
             tls
             tls_insecure_skip_verify
         }
-                # flush_interval -1
-    # buffer_requests off
-
-            # 添加streaming相关配置
     flush_interval -1
-    # buffer_requests off
     }
 }
 https://chattest.qqyunsd.com {
@@ -552,7 +547,7 @@ https://chattest.qqyunsd.com {
 
     reverse_proxy {
         to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
-        header_up Host liuli-chatgpt.soruxgpt.com
+        # header_up Host liuli-chatgpt.soruxgpt.com
         transport http {
             tls
             tls_insecure_skip_verify
