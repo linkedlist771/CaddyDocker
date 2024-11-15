@@ -259,20 +259,18 @@ https://chattest.585dg.com {
 
 
     # 默认反向代理配置
-    handle {
-        reverse_proxy https://liuli-chatgpt.soruxgpt.com {
-            header_up Host liuli-chatgpt.soruxgpt.com
-            transport http {
-                # tls
-                tls_insecure_skip_verify
-                versions h1
-            }
-        }
-    }
+    # handle {
+    #     reverse_proxy https://liuli-chatgpt.soruxgpt.com {
+    #         header_up Host liuli-chatgpt.soruxgpt.com
+    #         transport http {
+    #             tls_insecure_skip_verify
+    #             versions h1
+    #         }
+    #     }
+    # }
 
-    # 错误处理
-    handle_errors {
-        respond "{err.status_code} {err.status_text}"
+    reverse_proxy {
+        to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
     }
 }
 
