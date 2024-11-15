@@ -11,20 +11,24 @@
 
 # ACME challenge handling for HTTP
 :80 {
-    # 定义一个匹配器，匹配所有不包含 /backend-api/conversation 的请求
-    @applyReplace not path /backend-api/conversation
+    @notapi {
+        not path /backend-api/conversation
+    }
 
-    # 对匹配到的请求应用 replace 指令
-    replace @applyReplace {
+    reverse_proxy your_backend {
+        header_up Accept-Encoding identity  # 禁用压缩
+    }
+
+    replace @notapi {
+        match {
+            header Content-Type "text/*"
+        }
         "default-mail@soruxgpt.com" "email"
         "SoruxGPT.com User" "User"
         "Powered By SoruxGPT" "Powered By GPT"
         "前往 SoruxGPT 注册" "前往 GPT 注册"
     }
-
-    # 你的其他配置...
 }
-
 # 1. claude3.ucas.life
 claude3.ucas.life {
     #tls /etc/letsencrypt/live/claude3.ucas.life/fullchain.pem /etc/letsencrypt/live/claude3.ucas.life/privkey.pem
