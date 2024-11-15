@@ -24,6 +24,7 @@ services:
       retries: 3
     depends_on:
       - autoheal
+      
   autoheal:
     image: willfarrell/autoheal:latest
     container_name: autoheal
