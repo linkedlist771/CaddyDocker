@@ -480,7 +480,7 @@ https://clauai.qqyunsd.com {
 # }
 
 # HTTP 配置
-http://chattest.qqyunsd.com{
+http://chattest.qqyunsd.com {
     redir https://{host}{uri} permanent
 }
 
