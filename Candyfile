@@ -450,48 +450,50 @@ https://clauai.qqyunsd.com {
 
 # HTTP配置
 http://chattest.qqyunsd.com {
-    replace "SoruxGPT 登录" "GPT 登录"
-    replace "SoruxGPT 账号" "GPT 账号"
-    replace "SoruxGPT 密码" "GPT 密码"
-    replace "Hello, SoruxGPT!" "Hello, GPT!"
-    replace "default-mail@soruxgpt.com" "email"
-    replace "SoruxGPT.com User" "User"
+    # replace "SoruxGPT 登录" "GPT 登录"
+    # replace "SoruxGPT 账号" "GPT 账号"
+    # replace "SoruxGPT 密码" "GPT 密码"
+    # replace "Hello, SoruxGPT!" "Hello, GPT!"
+    # replace "default-mail@soruxgpt.com" "email"
+    # replace "SoruxGPT.com User" "User"
 
-    reverse_proxy {
-        to https://liuli-chatgpt.soruxgpt.com
-        # to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
-        header_up Host liuli-chatgpt.soruxgpt.com
-        transport http {
-            tls
-            tls_insecure_skip_verify
-        }
-    flush_interval -1
-    }
+    # reverse_proxy {
+    #     to https://liuli-chatgpt.soruxgpt.com
+    #     # to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
+    #     header_up Host liuli-chatgpt.soruxgpt.com
+    #     transport http {
+    #         tls
+    #         tls_insecure_skip_verify
+    #     }
+    # flush_interval -1
+    # }
+    reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
 }
 
 https://chattest.qqyunsd.com {
-    replace "SoruxGPT 登录" "GPT 登录"
-    replace "SoruxGPT 账号" "GPT 账号"
-    replace "SoruxGPT 密码" "GPT 密码"
-    replace "Hello, SoruxGPT!" "Hello, GPT!"
-    replace "default-mail@soruxgpt.com" "email"
-    replace "SoruxGPT.com User" "User"
+        reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
 
-    reverse_proxy {
-            to https://liuli-chatgpt.soruxgpt.com
-                    header_up Host liuli-chatgpt.soruxgpt.com
+    # replace "SoruxGPT 登录" "GPT 登录"
+    # replace "SoruxGPT 账号" "GPT 账号"
+    # replace "SoruxGPT 密码" "GPT 密码"
+    # replace "Hello, SoruxGPT!" "Hello, GPT!"
+    # replace "default-mail@soruxgpt.com" "email"
+    # replace "SoruxGPT.com User" "User"
 
-        # to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
-        # header_up Host liuli-chatgpt.soruxgpt.com
-        transport http {
-            tls
-            tls_insecure_skip_verify
-        }
-                flush_interval -1
-    # buffer_requests off
+    # reverse_proxy {
+    #         to https://liuli-chatgpt.soruxgpt.com
+    #         header_up Host liuli-chatgpt.soruxgpt.com
+    #     # to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
+    #     # header_up Host liuli-chatgpt.soruxgpt.com
+    #     transport http {
+    #         tls
+    #         tls_insecure_skip_verify
+    #     }
+    #             flush_interval -1
+    # # buffer_requests off
 
 
-    }
+    # }
 }
 
 # chattest.qqyunsd.com {
