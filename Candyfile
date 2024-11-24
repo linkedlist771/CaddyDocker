@@ -501,8 +501,9 @@ chattest.qqyunsd.com {
     }
 
     # reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 
-    reverse_proxy https://liuli-chatgpt.soruxgpt.com
+    reverse_proxy # https://liuli-chatgpt.soruxgpt.com
     {
+        to https://liuli-chatgpt.soruxgpt.com
         header_up Host {http.reverse_proxy.upstream.hostport}
         header_up Accept-Encoding identity  # 禁用压缩以确保替换能正常工作
            # 添加 WebSocket 支持
