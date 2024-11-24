@@ -504,8 +504,9 @@ chattest.qqyunsd.com {
         header_up Host {http.reverse_proxy.upstream.hostport}
         header_up Accept-Encoding identity  # 禁用压缩以确保替换能正常工作
            # 添加 WebSocket 支持
-        transport websocket {
-            tls_insecure_skip_verify # 如果上游使用自签名证书
+      # 如果需要跳过SSL验证，使用这个配置
+        transport http {
+            tls_insecure_skip_verify
         }
     }
     }
