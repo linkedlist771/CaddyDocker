@@ -501,7 +501,7 @@ chattest.qqyunsd.com {
     }
 
     reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 {
-        header_up Host {http.request.host}
+        header_up Host {http.reverse_proxy.upstream.hostport}
         header_up Accept-Encoding identity  # 禁用压缩以确保替换能正常工作
     }
 }
