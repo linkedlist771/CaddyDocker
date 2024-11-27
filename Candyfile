@@ -515,7 +515,7 @@ chattest.qqyunsd.com {
      to https://liuli-chatgpt.soruxgpt.com
       header_up Host liuli-chatgpt.soruxgpt.com
  }
-                 flush_interval -1
+                #  flush_interval -1
 
     #     # reverse_proxy {
 #     #         to https://liuli-chatgpt.soruxgpt.com
