@@ -511,10 +511,11 @@ chattest.qqyunsd.com {
     #   # 如果需要跳过SSL验证，使用这个配置
 
     # }
- reverse_proxy {
-     to https://liuli-chatgpt.soruxgpt.com
-      header_up Host liuli-chatgpt.soruxgpt.com
- }
+    reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
+#  reverse_proxy {
+#      to https://liuli-chatgpt.soruxgpt.com
+#       header_up Host liuli-chatgpt.soruxgpt.com
+#  }
                 #  flush_interval -1
 
     #     # reverse_proxy {
