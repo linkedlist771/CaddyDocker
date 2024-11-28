@@ -501,7 +501,7 @@ chattest.qqyunsd.com {
         "Failed to update conversation" ""
     }
         reverse_proxy {
-            to https://liuli-chatgpt.soruxgpt.com
+            to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
          header_up Accept-Encoding identity     
 }
 
