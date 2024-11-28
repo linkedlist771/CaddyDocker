@@ -502,7 +502,7 @@ chattest.qqyunsd.com {
     }
         reverse_proxy {
             to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
-         header_up Accept-Encoding identity     
+            # header_up Accept-Encoding identity     
 }
 
     # reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
