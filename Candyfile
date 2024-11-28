@@ -500,7 +500,11 @@ chattest.qqyunsd.com {
         "前往 SoruxGPT 注册" "前往 GPT 注册"
         "Failed to update conversation" ""
     }
-    reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
+        reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500 {
+         header_up Accept-Encoding identity     
+}
+
+    # reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
 #  reverse_proxy {
 #      to https://liuli-chatgpt.soruxgpt.com
 #       header_up Host liuli-chatgpt.soruxgpt.com
