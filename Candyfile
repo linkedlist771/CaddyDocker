@@ -505,11 +505,30 @@ chattest.qqyunsd.com {
             # header_up Accept-Encoding identity     
 }
 
-    # reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
-#  reverse_proxy {
-#      to https://liuli-chatgpt.soruxgpt.com
-#       header_up Host liuli-chatgpt.soruxgpt.com
-#  }
+
+http://sora.qqyunsd.com {
+    redir https://{host}{uri} permanent
+}
+
+sora.qqyunsd.com {
+    # @notapi {
+    #     not path /backend-api/conversation
+    # }
+
+    # replace @notapi {
+    #     "SoruxGPT 登录" "GPT 登录"
+    #     "SoruxGPT 账号" "GPT 账号"
+    #     "SoruxGPT 密码" "GPT 密码"
+    #     "Hello, SoruxGPT!" "Hello, GPT!"
+    #     "default-mail@soruxgpt.com" "email"
+    #     "SoruxGPT.com User" "User"
+    #     "Powered By SoruxGPT" "Powered By GPT"
+    #     "前往 SoruxGPT 注册" "前往 GPT 注册"
+    #     "Failed to update conversation" ""
+    # }
+        reverse_proxy {
+            to https://sora.com
+}
 
 }
 
