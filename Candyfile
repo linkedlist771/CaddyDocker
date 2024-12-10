@@ -504,6 +504,7 @@ chattest.qqyunsd.com {
             to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
             # header_up Accept-Encoding identity     
 }
+}
 
 
 http://sora.qqyunsd.com {
