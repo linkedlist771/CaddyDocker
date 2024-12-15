@@ -116,21 +116,21 @@ https://clauO1test.585dg.com {
     # }
 
     reverse_proxy http://198.23.208.13:8500 
-    # {
-    #     header_up Host {host}
-    #     header_up X-Real-IP {remote_host}
-    #     header_up X-Forwarded-Proto {scheme}
-    #     header_up X-Forwarded-For {remote_host}
-    #     header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
-    #     header_up CF-Ray {http.request.header.CF-Ray}
-    #     header_up Upgrade {header.Upgrade}
-    #     header_up Connection "upgrade"
-    #     transport http {
-    #         versions h1
-    #     }
-    #     flush_interval -1
-    #     health_timeout 5s
-    # }
+    {
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+        header_up X-Forwarded-For {remote_host}
+        header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
+        header_up CF-Ray {http.request.header.CF-Ray}
+        header_up Upgrade {header.Upgrade}
+        header_up Connection "upgrade"
+        transport http {
+            versions h1
+        }
+        flush_interval -1
+        health_timeout 5s
+    }
 }
 
 #{
