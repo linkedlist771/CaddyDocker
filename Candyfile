@@ -64,7 +64,7 @@ https://clauO1test.585dg.com {
         header_up X-Real-IP {remote}
         header_up X-Forwarded-Proto {scheme}
         header_up X-Forwarded-For {remote}
-        # header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
+        header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
         # header_up CF-Ray {http.request.header.CF-Ray}
         # header_up Upgrade {header.Upgrade}
         # header_up Connection "upgrade"
