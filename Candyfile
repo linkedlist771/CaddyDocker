@@ -32,10 +32,28 @@
 
 
 
-http://clauO1test.585dg.com  {
-redir https://{host}{uri}
+# http://clauO1test.585dg.com  {
+# redir https://{host}{uri}
+# }
+http://clauO1test.585dg.com {
+    redir https://{host}{uri}
 }
 
+https://clauO1test.585dg.com {
+    handle_path /list/* {
+        reverse_proxy http://198.23.208.13:8600
+    }
+
+    handle /api/* {
+        reverse_proxy http://198.23.208.13:8600
+    }
+
+    handle /app/* {
+        reverse_proxy http://198.23.208.13:8600
+    }
+
+    reverse_proxy http://198.23.208.13:8500
+}
 
 
 # https://clauO1test.585dg.com {
@@ -59,27 +77,29 @@ redir https://{host}{uri}
 #     reverse_proxy http://198.23.208.13:8500
 # }
 
-https://clauO1test.585dg.com {
-    # 静态资源MIME类型
-    header /list/css/* Content-Type "text/css"
+
+
+# https://clauO1test.585dg.com {
+#     # 静态资源MIME类型
+#     header /list/css/* Content-Type "text/css"
     
-    handle /list/* {
-        # 移除rewrite规则，让请求直接传递
-        reverse_proxy http://198.23.208.13:8600
-    }
+#     handle /list/* {
+#         # 移除rewrite规则，让请求直接传递
+#         reverse_proxy http://198.23.208.13:8600
+#     }
 
-    handle /api/* {
-        reverse_proxy http://198.23.208.13:8600
-    }
+#     handle /api/* {
+#         reverse_proxy http://198.23.208.13:8600
+#     }
 
-    handle /app/* {
-        reverse_proxy http://198.23.208.13:8600
-    }
+#     handle /app/* {
+#         reverse_proxy http://198.23.208.13:8600
+#     }
 
-    handle {
-        reverse_proxy http://198.23.208.13:8500
-    }
-}
+#     handle {
+#         reverse_proxy http://198.23.208.13:8500
+#     }
+# }
 
 
 # https://clauO1test.585dg.com {
