@@ -19,15 +19,15 @@
         header_up Accept-Encoding identity  # 禁用压缩
     }
 
-    replace @notapi {
-        match {
-            header Content-Type "text/*"
-        }
-        "default-mail@soruxgpt.com" "email"
-        "SoruxGPT.com User" "User"
-        "Powered By SoruxGPT" "Powered By GPT"
-        "前往 SoruxGPT 注册" "前往 GPT 注册"
-    }
+    # replace @notapi {
+    #     match {
+    #         header Content-Type "text/*"
+    #     }
+    #     "default-mail@soruxgpt.com" "email"
+    #     "SoruxGPT.com User" "User"
+    #     "Powered By SoruxGPT" "Powered By GPT"
+    #     "前往 SoruxGPT 注册" "前往 GPT 注册"
+    # }
 }
 
 
