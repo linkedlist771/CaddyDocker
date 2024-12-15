@@ -67,12 +67,12 @@ https://clauO1test.585dg.com {
         header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
         header_up CF-Ray {http.request.header.CF-Ray}
         header_up Upgrade {header.Upgrade}
-        header_up Connection "upgrade"
-        transport http {
-            versions h1
-        }
-        flush_interval 1s  # 根据需要调整
-        health_timeout 5s
+        # header_up Connection "upgrade"
+        # transport http {
+        #     versions h1
+        # }
+        # flush_interval 1s  # 根据需要调整
+        # health_timeout 5s
     }
 }
 
