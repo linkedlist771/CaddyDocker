@@ -40,19 +40,31 @@ http://clauO1test.585dg.com {
 }
 
 https://clauO1test.585dg.com {
-    handle_path /list/* {
-        reverse_proxy http://198.23.208.13:8600
-    }
 
-    handle /api/* {
-        reverse_proxy http://198.23.208.13:8600
-    }
+    # 设置静态资源的 MIME 类型
+    header /app/assets/* Content-Type "text/javascript"
+    header /app/assets/*.css Content-Type "text/css"
 
+    # 优先处理静态资源请求
     handle /app/* {
         reverse_proxy http://198.23.208.13:8600
     }
 
-    reverse_proxy http://198.23.208.13:8500
+    handle /assets/* {
+        reverse_proxy http://198.23.208.13:8600
+    }
+
+    # 处理 API 请求
+    handle /api/* {
+        reverse_proxy http://198.23.208.13:8600
+    }
+
+    # 处理其他需要重写到 index.html 的路径
+    handle {
+        # 仅当不是静态资源或 API 请求时，重写到 index.html
+        try_files {path} /app/index.html
+        reverse_proxy http://198.23.208.13:8500
+    }
 }
 
 
