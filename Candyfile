@@ -35,38 +35,52 @@
 # http://clauO1test.585dg.com  {
 # redir https://{host}{uri}
 # }
+# HTTP 请求重定向到 HTTPS
 http://clauO1test.585dg.com {
     redir https://{host}{uri}
 }
 
+# HTTPS 配置
 https://clauO1test.585dg.com {
 
-    # 设置静态资源的 MIME 类型
-    header /app/assets/* Content-Type "text/javascript"
-    header /app/assets/*.css Content-Type "text/css"
+    # 1. 处理静态 CSS 文件，确保不被重写
+    handle /list/css/* {
+        # 反向代理到后端服务器
+        reverse_proxy http://198.23.208.13:8600
 
-    # 优先处理静态资源请求
-    handle /app/* {
+        # 确保 Content-Type 为 text/css
+        header Content-Type "text/css"
+    }
+
+    # 2. 处理其他静态资源（如 JS 文件）
+    handle /app/assets/* {
         reverse_proxy http://198.23.208.13:8600
     }
 
-    handle /assets/* {
-        reverse_proxy http://198.23.208.13:8600
-    }
-
-    # 处理 API 请求
+    # 3. 处理 API 请求
     handle /api/* {
         reverse_proxy http://198.23.208.13:8600
     }
 
-    # 处理其他需要重写到 index.html 的路径
+    # 4. 处理 /app/* 路径下的请求
+    handle /app/* {
+        reverse_proxy http://198.23.208.13:8600
+    }
+
+    # 5. 处理 /list/* 下非静态资源的请求，重写到 index.html
+    handle_path /list/* {
+        # 仅当不是静态资源时，重写到 index.html
+        rewrite * /app/index.html
+
+        # 反向代理到后端服务器
+        reverse_proxy http://198.23.208.13:8600
+    }
+
+    # 6. 处理所有其他未匹配的请求
     handle {
-        # 仅当不是静态资源或 API 请求时，重写到 index.html
-        try_files {path} /app/index.html
         reverse_proxy http://198.23.208.13:8500
     }
 }
-
 
 # https://clauO1test.585dg.com {
 
