@@ -38,24 +38,25 @@ redir https://{host}{uri}
 
 
 
- https://clauO1test.585dg.com 
- {
+https://clauO1test.585dg.com {
 
-   handle_path /list/* {
+    # Add MIME type configuration
+    header /list/css/* Content-Type "text/css"
+
+    handle_path /list/* {
         rewrite * /app/index.html
         reverse_proxy http://198.23.208.13:8600
-        }
+    }
 
-   handle /api/* {
+    handle /api/* {
         reverse_proxy http://198.23.208.13:8600
-        }
+    }
 
-   handle /app/* {
+    handle /app/* {
         reverse_proxy http://198.23.208.13:8600
-        }
+    }
 
-reverse_proxy http://198.23.208.13:8500
-
+    reverse_proxy http://198.23.208.13:8500
 }
 
 # https://clauO1test.585dg.com {
