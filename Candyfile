@@ -117,29 +117,47 @@ http://clauO1test.585dg.com {
 #     }
 # }
 
-https://clauO1test.585dg.com {
+https://clauO1test.585dg.com{
 
-    # Add MIME type configuration
-    # header /list/css/* Content-Type "text/css"
-    redir /list /list/
-
-       handle_path /list {
-        rewrite * /app/index.html
+handle /api/* {
         reverse_proxy http://198.23.208.13:8600
         }
 
-
-
-    handle /api/* {
+   handle /app/* {
         reverse_proxy http://198.23.208.13:8600
-    }
+        }
+  
+   redir /list /list/
+   handle_path /list/* {
+       rewrite *  /app/index.html
+       reverse_proxy http://198.23.208.13:8600
+   }
 
-    handle /app/* {
-        reverse_proxy http://198.23.208.13:8600
-    }
-
-    reverse_proxy http://198.23.208.13:8500
+reverse_proxy http://198.23.208.13:8500
 }
+;  {
+
+;     # Add MIME type configuration
+;     # header /list/css/* Content-Type "text/css"
+;     redir /list /list/
+
+;        handle_path /list {
+;         rewrite * /app/index.html
+;         reverse_proxy http://198.23.208.13:8600
+;         }
+
+
+
+;     handle /api/* {
+;         reverse_proxy http://198.23.208.13:8600
+;     }
+
+;     handle /app/* {
+;         reverse_proxy http://198.23.208.13:8600
+;     }
+
+;     reverse_proxy http://198.23.208.13:8600
+; }
 
 
 
