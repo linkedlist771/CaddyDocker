@@ -121,11 +121,14 @@ https://clauO1test.585dg.com {
 
     # Add MIME type configuration
     # header /list/css/* Content-Type "text/css"
+    redir /list /list/
 
-    handle_path /list/* {
+       handle_path /list {
         rewrite * /app/index.html
         reverse_proxy http://198.23.208.13:8600
-    }
+        }
+
+
 
     handle /api/* {
         reverse_proxy http://198.23.208.13:8600
