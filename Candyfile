@@ -117,8 +117,7 @@ http://clauO1test.585dg.com {
 #     }
 # }
 
-https://clauO1test.585dg.com{
-
+https://clauO1test.585dg.com {
 handle /api/* {
         reverse_proxy http://198.23.208.13:8600
         }
