@@ -17,7 +17,7 @@ http://chatai.qqyunsd.com {
 redir https://{host}{uri} permanent
 }
 
-chatai.qqyunsd.com {
+https://chatai.qqyunsd.com {
 @notapi {
 not path /backend-api/conversation
 }
@@ -44,7 +44,7 @@ http://mcy.liuligpt.com {
 redir https://{host}{uri} permanent
 }
 
-mcy.liuligpt.com {
+https://mcy.liuligpt.com {
 reverse_proxy {
     to http://52.221.142.198:911/
     }
