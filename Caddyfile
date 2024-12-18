@@ -40,12 +40,13 @@ reverse_proxy {
 
 
 # 2. shop反代服务。
-http://mcy.liuligpt.com {
+http://ai.liuligpt.com {
 redir https://{host}{uri} permanent
 }
 
-https://mcy.liuligpt.com {
+https://ai.liuligpt.com {
 reverse_proxy {
     to http://52.221.142.198:911
     }
 }
+
