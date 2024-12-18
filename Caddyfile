@@ -37,3 +37,15 @@ reverse_proxy {
     to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
     }
 }
+
+
+# 2. shop反代服务。
+http://mcy.liuligpt.com {
+redir https://{host}{uri} permanent
+}
+
+mcy.liuligpt.com {
+reverse_proxy {
+    to http://52.221.142.198:911/
+    }
+}
