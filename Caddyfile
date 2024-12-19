@@ -50,3 +50,14 @@ reverse_proxy {
     }
 }
 
+
+http://ailiu.585dg.com {
+redir https://{host}{uri} permanent
+}
+
+https://ailiu.585dg.com{
+reverse_proxy {
+    to http://52.221.142.198:911
+    }
+}
+
