@@ -871,7 +871,7 @@ redir https://{host}{uri} permanent
 
 
 https://clauaitest.qqyunsd.com {
-reverse_proxy http://54.254.143.80:8300 {
+reverse_proxy http://54.254.143.80:8301 {
 header_up Host {host}
 header_up X-Real-IP {remote_host}
 header_up X-Forwarded-Proto {scheme}
