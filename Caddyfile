@@ -343,9 +343,14 @@ http://clauO1.585dg.com  {
 }
 
 https://clauO1.585dg.com  {
-   handle /api/* {
-        reverse_proxy http://54.254.143.80:8600
+    handle /api/* {
+        reverse_proxy http://54.254.143.80:8600 {
+            header_up Host {host}
+            header_up X-Real-IP {remote_host}
+            header_up X-Forwarded-For {remote_host}
+            header_up REMOTE-HOST {remote_host}
         }
+    }
 
    handle /app/* {
         reverse_proxy http://54.254.143.80:8600
