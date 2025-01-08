@@ -109,7 +109,7 @@ replace @notapi {
 reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
     header_up myhost {http.request.host}
-    # header_up Accept-Encoding identity  # 禁用上游服务器的压缩
+    header_up Accept-Encoding identity  # 禁用上游服务器的压缩
 }
 
 }
