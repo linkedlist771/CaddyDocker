@@ -91,11 +91,11 @@ redir https://{host}{uri} permanent
 }
 
 https://chatchangetest.585dg.com {
-# @notapi {
-# not path /backend-api/conversation
-# }
+@notapi {
+not path /backend-api/conversation
+}
 
-replace {
+replace @notapi {
 "SoruxGPT 登录" "GPT 登录"
 "SoruxGPT 账号" "GPT 账号"
 "SoruxGPT 密码" "GPT 密码"
@@ -109,9 +109,7 @@ replace {
 reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
     header_up myhost {http.request.host}
-    header_down -Accept-Encoding
     header_up Accept-Encoding identity  # 禁用上游服务器的压缩
-
 }
 
 }
