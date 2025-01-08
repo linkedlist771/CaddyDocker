@@ -1,5 +1,5 @@
 {
-    order replace before encode
+    order replace after encode
     # Global options
     auto_https disable_redirects
     # 可选: 配置邮箱用于 Let's Encrypt 通知
@@ -91,11 +91,11 @@ redir https://{host}{uri} permanent
 }
 
 https://chatchangetest.585dg.com {
-@notapi {
-not path /backend-api/conversation
-}
+# @notapi {
+# not path /backend-api/conversation
+# }
 
-replace @notapi {
+replace {
 "SoruxGPT 登录" "GPT 登录"
 "SoruxGPT 账号" "GPT 账号"
 "SoruxGPT 密码" "GPT 密码"
