@@ -107,8 +107,8 @@ replace @notapi {
 }
 
 reverse_proxy https://soruxgpt-saas-soruxgptmain.soruxgpt.com {
-# header_up Host soruxgpt-saas-soruxgptmain.soruxgpt.com
-# header_up myhost {http.request.host}
+    header_up Host soruxgpt-saas-soruxgptmain.soruxgpt.com
+    header_up myhost {http.request.host}
 }
 
 }
