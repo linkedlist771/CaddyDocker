@@ -61,3 +61,33 @@ reverse_proxy {
     }
 }
 
+# 3. GPT反代测试服务。
+http://chatchangetest.585dg.com {
+redir https://{host}{uri} permanent
+}
+
+https://chatchangetest.585dg.com {
+@notapi {
+not path /backend-api/conversation
+}
+
+replace @notapi {
+"SoruxGPT 登录" "GPT 登录"
+"SoruxGPT 账号" "GPT 账号"
+"SoruxGPT 密码" "GPT 密码"
+"Hello, SoruxGPT!" "Hello, GPT!"
+"default-mail@soruxgpt.com" "email"
+"SoruxGPT.com User" "User"
+"Powered By SoruxGPT" "Powered By GPT"
+"前往 SoruxGPT 注册" "前往 GPT 注册"
+}
+
+# reverse_proxy {
+#     to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
+#     }
+reverse_proxy https://soruxgpt-saas-soruxgptmain.soruxgpt.com {
+header_up Host soruxgpt-saas-soruxgptmain.soruxgpt.com
+header_up myhost {http.request.host}
+}
+
+}
