@@ -1483,3 +1483,92 @@ versions h1
 flush_interval -1
 }
 }
+
+
+
+# 21. 新增 lanfanqie.585dg.com 配置
+http://lanfanqie.585dg.com {
+    redir https://{host}{uri} permanent
+}
+
+https://lanfanqie.585dg.com {
+    @acme_challenge {
+        path /.well-known/acme-challenge/*
+    }
+    handle @acme_challenge {
+        root * /var/www/html
+        file_server
+    }
+
+    reverse_proxy http://54.254.143.80:9000 {
+        header_up Host {host}
+        header_up Upgrade {header.Upgrade}
+        header_up Connection "upgrade"
+        transport http {
+            versions h1
+        }
+        flush_interval -1
+        health_timeout 5s
+    }
+}
+
+# 22. https://lanfanqie.store.585dg.com/添加新的反向代理配置 
+http://lanfanqie.store.585dg.com {
+    redir https://{host}{uri} permanent
+}
+
+https://lanfanqie.store.585dg.com {
+    @acme_challenge {
+        path /.well-known/acme-challenge/*
+    }
+    handle @acme_challenge {
+        root * /var/www/html
+        file_server
+    }
+
+    handle {
+        reverse_proxy http://54.254.143.80:9000 {
+            header_up Host {host}
+            header_up Upgrade {header.Upgrade}
+            header_up Connection "upgrade"
+            transport http {
+                versions h1
+            }
+            flush_interval -1
+            health_timeout 5s
+        }
+    }
+}
+
+# 23. http://pilianghoutai.qqyunsd.com添加新的反向代理配置 
+http://pilianghoutai.qqyunsd.com {
+    redir https://{host}{uri} permanent
+}
+
+https://pilianghoutai.qqyunsd.com {
+    @acme_challenge {
+        path /.well-known/acme-challenge/*
+    }
+    handle @acme_challenge {
+        root * /var/www/html
+        file_server
+    }
+
+    handle {
+        reverse_proxy http://54.254.143.80:5000 {
+            header_up Host {host}
+            header_up X-Real-IP {remote_host}
+            header_up X-Forwarded-Proto {scheme}
+            header_up X-Forwarded-For {remote_host}
+            header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
+            header_up CF-Ray {http.request.header.CF-Ray}
+            header_up Upgrade {header.Upgrade}
+            header_up Connection "upgrade"
+            transport http {
+                versions h1
+            }
+            flush_interval -1
+            health_timeout 5s
+        }
+    }
+}
