@@ -1045,6 +1045,7 @@ flush_interval -1
 health_timeout 5s
 }
 }
+
 https://shop.qqyunsd.com {
 reverse_proxy http://54.254.143.80:9000 {
 header_up Host {host}
@@ -1512,32 +1513,32 @@ https://lanfanqie.585dg.com {
     }
 }
 
+
+
 # 22. https://lanfanqie.store.585dg.com/添加新的反向代理配置 
 http://lanfanqie.store.585dg.com {
-    redir https://{host}{uri} permanent
+reverse_proxy http://54.254.143.80:9000 {
+header_up Host {host}
+header_up Upgrade {header.Upgrade}
+header_up Connection "upgrade"
+transport http {
+versions h1
+}
+flush_interval -1
+}
+
 }
 
 https://lanfanqie.store.585dg.com {
-    @acme_challenge {
-        path /.well-known/acme-challenge/*
-    }
-    handle @acme_challenge {
-        root * /var/www/html
-        file_server
-    }
-
-    handle {
-        reverse_proxy http://54.254.143.80:9000 {
-            header_up Host {host}
-            header_up Upgrade {header.Upgrade}
-            header_up Connection "upgrade"
-            transport http {
-                versions h1
-            }
-            flush_interval -1
-            health_timeout 5s
-        }
-    }
+reverse_proxy http://54.254.143.80:9000 {
+header_up Host {host}
+header_up Upgrade {header.Upgrade}
+header_up Connection "upgrade"
+transport http {
+versions h1
+}
+flush_interval -1
+}
 }
 
 # 23. http://pilianghoutai.qqyunsd.com添加新的反向代理配置 
