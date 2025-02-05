@@ -1597,3 +1597,28 @@ https://pilianghoutai.qqyunsd.com {
         }
     }
 }
+
+# 24. newapi.585dg.com: new api格式反向代理（带有deepseek的r1 api)
+http://newapi.585dg.com {
+    redir https://{host}{uri} permanent
+}
+
+https://newapi.585dg.com {
+    handle {
+        reverse_proxy http://54.254.143.80:3000 {
+            header_up Host {host}
+            header_up X-Real-IP {remote_host}
+            header_up X-Forwarded-Proto {scheme}
+            header_up X-Forwarded-For {remote_host}
+            header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
+            header_up CF-Ray {http.request.header.CF-Ray}
+            header_up Upgrade {header.Upgrade}
+            header_up Connection "upgrade"
+            transport http {
+                versions h1
+            }
+            flush_interval -1
+            health_timeout 5s
+        }
+    }
+}
