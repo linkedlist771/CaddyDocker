@@ -116,3 +116,17 @@ reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
 }
 
 }
+
+
+# 6. LobreChat服务。
+http://chatpoe.qqyunsd.com {
+redir https://{host}{uri} permanent
+}
+
+https://chatpoe.qqyunsd.com {
+
+   reverse_proxy {
+        to http://52.221.142.198:3080
+    }
+
+}
