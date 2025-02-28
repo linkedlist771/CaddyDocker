@@ -984,6 +984,9 @@ reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
 }
 
 }
+
+
+
 http://chatai.qqyunsd.com {
 redir https://{host}{uri} permanent
 }
@@ -1621,4 +1624,39 @@ https://newapi.585dg.com {
             health_timeout 5s
         }
     }
+}
+
+# 25.   chatgpt4plus.com 代理GPT
+
+
+http://chatgpt4plus.com {
+redir https://{host}{uri} permanent
+}
+
+https://chatgpt4plus.com {
+@notapi {
+not path /backend-api/conversation
+}
+
+replace @notapi {
+"SoruxGPT 登录" "GPT 登录"
+"SoruxGPT 账号" "GPT 账号"
+"SoruxGPT 密码" "GPT 密码"
+"Hello, SoruxGPT!" "Hello, GPT!"
+"default-mail@soruxgpt.com" "email"
+"SoruxGPT.com User" "User"
+"Powered By SoruxGPT" "Powered By GPT"
+"前往 SoruxGPT 注册" "前往 GPT 注册"
+}
+# reverse_proxy {
+#             to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
+#             # header_up Accept-Encoding identity     
+# }
+
+reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
+    header_up Host soruxgpt-saas-liuli.soruxgpt.com
+    header_up myhost {http.request.host}
+    header_up Accept-Encoding identity  # 禁用上游服务器的压缩
+}
+
 }
