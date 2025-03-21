@@ -1696,3 +1696,32 @@ reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
 }
 
 }
+
+
+# 22. 新增 lanfanqie.585dg.com 配置
+http://claudedirect.585dg.com {
+    redir https://{host}{uri} permanent
+}
+
+https://claudedirect.585dg.com {
+    @acme_challenge {
+        path /.well-known/acme-challenge/*
+    }
+    handle @acme_challenge {
+        root * /var/www/html
+        file_server
+    }
+
+    reverse_proxy http://54.254.143.80:8181 {
+        header_up Host {host}
+        header_up Upgrade {header.Upgrade}
+        header_up Connection "upgrade"
+        transport http {
+            versions h1
+        }
+        flush_interval -1
+        health_timeout 5s
+    }
+}
+
+
