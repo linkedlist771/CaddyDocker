@@ -1749,17 +1749,17 @@ replace @notapi {
 # "Powered By SoruxGPT" "Powered By GPT"
 # "前往 SoruxGPT 注册" "前往 GPT 注册"
 }
-reverse_proxy {
-            to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
-            # header_up Accept-Encoding identity     
-                header_up myhost {http.request.host}
-    header_up Accept-Encoding identity  # 禁用上游服务器的压缩
-}
-
-# reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
-#     header_up Host soruxgpt-saas-liuli.soruxgpt.com
-#     header_up myhost {http.request.host}
+# reverse_proxy {
+#             to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
+#             # header_up Accept-Encoding identity     
+#                 header_up myhost {http.request.host}
 #     header_up Accept-Encoding identity  # 禁用上游服务器的压缩
 # }
+
+reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
+    header_up Host soruxgpt-saas-liuli.soruxgpt.com
+    header_up myhost {http.request.host}
+    header_up Accept-Encoding identity  # 禁用上游服务器的压缩
+}
 
 }
