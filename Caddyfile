@@ -1740,7 +1740,7 @@ not path /backend-api/conversation
 
 replace @notapi {
 re "(?s)<nav.*?</nav>" ""  # This will remove all content between <nav> and </nav> tags, including the tags themselves  
-# "SoruxGPT 登录" "GPT 登录"
+"深入研究" ""
 # "SoruxGPT 账号" "GPT 账号"
 # "SoruxGPT 密码" "GPT 密码"
 # "Hello, SoruxGPT!" "Hello, GPT!"
@@ -1754,7 +1754,8 @@ re "(?s)<nav.*?</nav>" ""  # This will remove all content between <nav> and </na
 #             # header_up Accept-Encoding identity     
 # }
 
-reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
+# reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
+reverse_proxy http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500{
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
     header_up myhost {http.request.host}
     header_up Accept-Encoding identity  # 禁用上游服务器的压缩
