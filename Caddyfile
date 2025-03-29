@@ -1698,7 +1698,7 @@ reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
 }
 
 
-# 22. 新增 lanfanqie.585dg.com 配置
+# 27. 新增claudedirect.585dg.com配置
 http://claudedirect.585dg.com {
     redir https://{host}{uri} permanent
 }
@@ -1725,3 +1725,38 @@ https://claudedirect.585dg.com {
 }
 
 
+
+# 27.   gpt4oimagedrawing.585dg.com 单用于gpt4o画图屏蔽
+
+
+http://gpt4oimagedrawing.585dg.com {
+redir https://{host}{uri} permanent
+}
+
+https://gpt4oimagedrawing.585dg.com {
+@notapi {
+not path /backend-api/conversation
+}
+
+replace @notapi {
+"SoruxGPT 登录" "GPT 登录"
+"SoruxGPT 账号" "GPT 账号"
+"SoruxGPT 密码" "GPT 密码"
+"Hello, SoruxGPT!" "Hello, GPT!"
+"default-mail@soruxgpt.com" "email"
+"SoruxGPT.com User" "User"
+"Powered By SoruxGPT" "Powered By GPT"
+"前往 SoruxGPT 注册" "前往 GPT 注册"
+}
+# reverse_proxy {
+#             to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
+#             # header_up Accept-Encoding identity     
+# }
+
+reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
+    header_up Host soruxgpt-saas-liuli.soruxgpt.com
+    header_up myhost {http.request.host}
+    header_up Accept-Encoding identity  # 禁用上游服务器的压缩
+}
+
+}
