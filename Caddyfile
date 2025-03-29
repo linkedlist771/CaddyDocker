@@ -1740,7 +1740,7 @@ not path /backend-api/conversation
 
 replace @notapi {
 re "(?s)<nav.*?</nav>" ""  # This will remove all content between <nav> and </nav> tags, including the tags themselves  
-"深入研究" ""
+"深入研究" "312321"
 # "SoruxGPT 账号" "GPT 账号"
 # "SoruxGPT 密码" "GPT 密码"
 # "Hello, SoruxGPT!" "Hello, GPT!"
