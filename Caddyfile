@@ -1763,3 +1763,40 @@ reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
 }
 
 }
+
+# 
+
+http://agent.tikeai.com {
+redir https://{host}{uri} permanent
+}
+
+https://agent.tikeai.com {
+@notapi {
+not path /backend-api/conversation
+}
+
+replace @notapi {
+# re "(?s)<nav.*?</nav>" ""  # This will remove all content between <nav> and </nav> tags, including the tags themselves  
+"ChatGPT" "Claude"
+# "SoruxGPT 账号" "GPT 账号"
+# "SoruxGPT 密码" "GPT 密码"
+# "Hello, SoruxGPT!" "Hello, GPT!"
+# "default-mail@soruxgpt.com" "email"
+# "SoruxGPT.com User" "User"
+# "Powered By SoruxGPT" "Powered By GPT"
+# "前往 SoruxGPT 注册" "前往 GPT 注册"
+}
+# reverse_proxy {
+#             to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
+#             # header_up Accept-Encoding identity     
+#                 header_up myhost {http.request.host}
+#     header_up Accept-Encoding identity  # 禁用上游服务器的压缩
+# }
+
+reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
+    header_up Host soruxgpt-saas-liuli.soruxgpt.com
+    header_up myhost {http.request.host}
+    header_up Accept-Encoding identity  # 禁用上游服务器的压缩
+}
+
+}
