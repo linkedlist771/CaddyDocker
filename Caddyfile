@@ -1806,8 +1806,6 @@ replace @notapi {
             header_up X-Real-IP {remote_host}
             header_up X-Forwarded-Proto {scheme}
             header_up X-Forwarded-For {remote_host}
-            header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
-            header_up CF-Ray {http.request.header.CF-Ray}
             header_up Upgrade {header.Upgrade}
             header_up Connection "upgrade"
             transport http {
