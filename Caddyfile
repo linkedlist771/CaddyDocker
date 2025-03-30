@@ -130,3 +130,25 @@ https://chatpoe.qqyunsd.com {
     }
 
 }
+
+
+http://drawgpt4o.qqyunsd.com {
+redir https://{host}{uri} permanent
+}
+
+https://drawgpt4o.qqyunsd.com {
+@notapi {
+not path /backend-api/conversation
+}
+
+
+
+reverse_proxy http://52.221.142.198:5001 {
+header_up Host {host}
+header_up Upgrade {header.Upgrade}
+header_up Connection "upgrade"
+transport http {
+versions h1
+}
+}
+}
