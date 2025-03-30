@@ -1766,22 +1766,22 @@ reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
 
 # 
 
-# http://agent.tikeai.com {
-# redir https://{host}{uri} permanent
-# }
+http://agent.tikeai.com {
+redir https://{host}{uri} permanent
+}
 
-# https://agent.tikeai.com {
-# @notapi {
-# not path /backend-api/conversation
-# }
+https://agent.tikeai.com {
+@notapi {
+not path /backend-api/conversation
+}
 
 
 
-# reverse_proxy http://198.23.208.13:5000 {
-# header_up Host {host}
-# header_up Upgrade {header.Upgrade}
-# header_up Connection "upgrade"
-# transport http {
-# versions h1
-# }
-# }
+reverse_proxy http://198.23.208.13:5000 {
+header_up Host {host}
+header_up Upgrade {header.Upgrade}
+header_up Connection "upgrade"
+transport http {
+versions h1
+}
+}
