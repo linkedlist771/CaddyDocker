@@ -140,6 +140,19 @@ https://drawgpt4o.qqyunsd.com {
 @notapi {
 not path /backend-api/conversation
 }
+# 添加CORS支持 - 处理预检请求
+@options {
+    method OPTIONS
+}
+respond @options 204
+
+# 添加CORS头部 - 允许所有域访问
+header {
+    Access-Control-Allow-Origin *
+    Access-Control-Allow-Methods GET,POST,PUT,DELETE,OPTIONS
+    Access-Control-Allow-Headers *
+    Access-Control-Max-Age 3600
+}
 
 
 
