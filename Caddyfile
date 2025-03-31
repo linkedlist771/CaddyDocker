@@ -1777,11 +1777,36 @@ not path /backend-api/conversation
 
 
 
-reverse_proxy http://198.23.208.13:5000 {
-header_up Host {host}
-header_up Upgrade {header.Upgrade}
-header_up Connection "upgrade"
-transport http {
-versions h1
-}
+ # 定义OPTIONS请求的匹配器
+    @options {
+        method OPTIONS
+    }
+    
+    # 处理OPTIONS预检请求
+    handle @options {
+        header Access-Control-Allow-Origin "https://www.tikeai.com"
+        header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+        header Access-Control-Allow-Headers "Content-Type, Authorization"
+        header Access-Control-Allow-Credentials "true"
+        header Access-Control-Max-Age "3600"
+        respond 204
+    }
+    
+    # 为所有其他请求添加CORS头
+    handle {
+        header Access-Control-Allow-Origin "https://www.tikeai.com"
+        header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+        header Access-Control-Allow-Headers "Content-Type, Authorization"
+        header Access-Control-Allow-Credentials "true"
+        
+        # 继续你的反向代理配置
+        reverse_proxy http://198.23.208.13:5000 {
+            header_up Host {host}
+            header_up Upgrade {header.Upgrade}
+            header_up Connection "upgrade"
+            transport http {
+                versions h1
+            }
+        }
+    }
 }
