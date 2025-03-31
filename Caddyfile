@@ -1786,6 +1786,8 @@ header {
     Access-Control-Allow-Methods GET,POST,PUT,DELETE,OPTIONS
     Access-Control-Allow-Headers *
     Access-Control-Max-Age 3600
+    Access-Control-Expose-Headers Set-Cookie  # 这是新添加的行，允许前端访问Set-Cookie头
+
 }
 
 reverse_proxy http://198.23.208.13:5000 {
