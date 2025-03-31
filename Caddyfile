@@ -1777,28 +1777,11 @@ not path /backend-api/conversation
 
 
 
-   # 添加CORS头
-    header {
-        Access-Control-Allow-Origin "https://www.tikeai.com"
-        Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
-        Access-Control-Allow-Headers "Content-Type, Authorization"
-        Access-Control-Allow-Credentials true
-        # 为预检请求添加以下内容
-        @options {
-            method OPTIONS
-        }
-        @options Access-Control-Max-Age "3600"
-    }
-    
-    # 处理预检请求
-    respond @options 204
-    
-    reverse_proxy http://198.23.208.13:5000 {
-        header_up Host {host}
-        header_up Upgrade {header.Upgrade}
-        header_up Connection "upgrade"
-        transport http {
-            versions h1
-        }
-    }
+reverse_proxy http://198.23.208.13:5000 {
+header_up Host {host}
+header_up Upgrade {header.Upgrade}
+header_up Connection "upgrade"
+transport http {
+versions h1
+}
 }
