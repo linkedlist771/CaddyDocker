@@ -133,44 +133,22 @@ https://chatpoe.qqyunsd.com {
 
 
 http://drawgpt4o.qqyunsd.com {
-  redir https://{host}{uri} permanent
+redir https://{host}{uri} permanent
 }
 
 https://drawgpt4o.qqyunsd.com {
-  # 定义OPTIONS请求的匹配器
-  @options {
-    method OPTIONS
-  }
-  
-  # 处理OPTIONS预检请求
-  handle @options {
-    header Access-Control-Allow-Origin "https://www.tikeai.com"
-    header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
-    header Access-Control-Allow-Headers "Content-Type, Authorization"
-    header Access-Control-Allow-Credentials "true"
-    header Access-Control-Max-Age "3600"
-    respond 204
-  }
-  
-  # 为所有其他请求添加CORS头
-  handle {
-    header Access-Control-Allow-Origin "https://www.tikeai.com"
-    header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
-    header Access-Control-Allow-Headers "Content-Type, Authorization"
-    header Access-Control-Allow-Credentials "true"
-    
-    # 非API路径的反向代理配置
-    @notapi {
-      not path /backend-api/conversation
-    }
-    
-    reverse_proxy @notapi http://52.221.142.198:5001 {
-      header_up Host {host}
-      header_up Upgrade {header.Upgrade}
-      header_up Connection "upgrade"
-      transport http {
-        versions h1
-      }
-    }
-  }
+@notapi {
+not path /backend-api/conversation
+}
+
+
+
+reverse_proxy http://52.221.142.198:5001 {
+header_up Host {host}
+header_up Upgrade {header.Upgrade}
+header_up Connection "upgrade"
+transport http {
+versions h1
+}
+}
 }
