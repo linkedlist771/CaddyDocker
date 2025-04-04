@@ -168,6 +168,11 @@ versions h1
 
 # 新的绑定的域名。 
 
+
+http://agent.tikeai.com {
+redir https://{host}{uri} permanent
+}
+
 https://agent.tikeai.com {
 @notapi {
 not path /backend-api/conversation
@@ -196,4 +201,18 @@ transport http {
 versions h1
 }
 }
+}
+
+
+# 7. RevPoe
+http://revpoe.qqyunsd.com {
+redir https://{host}{uri} permanent
+}
+
+https://revpoe.qqyunsd.com {
+
+   reverse_proxy {
+        to http://52.221.142.198:8505
+    }
+
 }
