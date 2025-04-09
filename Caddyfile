@@ -18,26 +18,26 @@ redir https://{host}{uri} permanent
 }
 
 https://chatai.qqyunsd.com {
-@notapi {
-not path /backend-api/conversation
+
+# 添加CORS头部 - 允许所有域访问
+header {
+    Access-Control-Allow-Origin *
+    Access-Control-Allow-Methods GET,POST,PUT,DELETE,OPTIONS
+    Access-Control-Allow-Headers *
+    Access-Control-Max-Age 3600
+    Access-Control-Expose-Headers Set-Cookie  # 这是新添加的行，允许前端访问Set-Cookie头
+
+}
+reverse_proxy http://52.221.142.198:8508 {
+header_up Host {host}
+header_up Upgrade {header.Upgrade}
+header_up Connection "upgrade"
+transport http {
+versions h1
+}
 }
 
-replace @notapi {
-"SoruxGPT 登录" "GPT 登录"
-"SoruxGPT 账号" "GPT 账号"
-"SoruxGPT 密码" "GPT 密码"
-"Hello, SoruxGPT!" "Hello, GPT!"
-"default-mail@soruxgpt.com" "email"
-"SoruxGPT.com User" "User"
-"Powered By SoruxGPT" "Powered By GPT"
-"前往 SoruxGPT 注册" "前往 GPT 注册"
-}
 
-reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
-    header_up Host soruxgpt-saas-liuli.soruxgpt.com
-    header_up myhost {http.request.host}
-    header_up Accept-Encoding identity  # 禁用上游服务器的压缩
-}
 
 }
 
