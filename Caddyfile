@@ -28,12 +28,15 @@ header {
     Access-Control-Expose-Headers Set-Cookie  # 这是新添加的行，允许前端访问Set-Cookie头
 
 }
+
+
 reverse_proxy http://52.221.142.198:8508 {
-header_up Host {host}
-header_up Upgrade {header.Upgrade}
-header_up Connection "upgrade"
-transport http {
-versions h1
+    header_up Host soruxgpt-saas-liuli.soruxgpt.com
+    header_up myhost {http.request.host}
+    header_up Upgrade {header.Upgrade}
+    header_up Connection "upgrade"
+    transport http {
+    versions h1
 }
 }
 
