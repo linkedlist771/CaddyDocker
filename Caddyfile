@@ -381,7 +381,8 @@ header {
 
 }
 reverse_proxy http://54.254.143.80:8508 {
-header_up Host {host}
+header_up Host soruxgpt-saas-liuli.soruxgpt.com
+header_up myhost {http.request.host}
 header_up Upgrade {header.Upgrade}
 header_up Connection "upgrade"
 transport http {
@@ -438,7 +439,8 @@ header {
 
 }
 reverse_proxy http://54.254.143.80:8508 {
-header_up Host {host}
+header_up Host soruxgpt-saas-liuli.soruxgpt.com
+header_up myhost {http.request.host}
 header_up Upgrade {header.Upgrade}
 header_up Connection "upgrade"
 transport http {
@@ -468,7 +470,8 @@ header {
 
 }
 reverse_proxy http://54.254.143.80:8508 {
-header_up Host {host}
+header_up Host soruxgpt-saas-liuli.soruxgpt.com
+header_up myhost {http.request.host}
 header_up Upgrade {header.Upgrade}
 header_up Connection "upgrade"
 transport http {
@@ -998,7 +1001,8 @@ header {
 
 }
 reverse_proxy http://54.254.143.80:8508 {
-header_up Host {host}
+header_up Host soruxgpt-saas-liuli.soruxgpt.com
+header_up myhost {http.request.host}
 header_up Upgrade {header.Upgrade}
 header_up Connection "upgrade"
 transport http {
