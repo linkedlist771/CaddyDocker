@@ -370,7 +370,9 @@ redir https://{host}{uri} permanent
 }
 
 chat.585dg.com {
-
+replace {
+"videos.openai.com" "videos.qqyunsd.com"
+}
 # 添加CORS头部 - 允许所有域访问
 header {
     Access-Control-Allow-Origin *
@@ -428,7 +430,9 @@ redir https://{host}{uri} permanent
 }
 
 https://aigo1.585dg.com {
-
+replace {
+"videos.openai.com" "videos.qqyunsd.com"
+}
 # 添加CORS头部 - 允许所有域访问
 header {
     Access-Control-Allow-Origin *
@@ -459,7 +463,9 @@ redir https://{host}{uri} permanent
 }
 
 o1pre.585dg.com {
-
+replace {
+"videos.openai.com" "videos.qqyunsd.com"
+}
 # 添加CORS头部 - 允许所有域访问
 header {
     Access-Control-Allow-Origin *
@@ -990,7 +996,9 @@ redir https://{host}{uri} permanent
 }
 
 chat.qqyunsd.com {
-
+replace {
+"videos.openai.com" "videos.qqyunsd.com"
+}
 # 添加CORS头部 - 允许所有域访问
 header {
     Access-Control-Allow-Origin *
