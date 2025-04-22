@@ -207,136 +207,6 @@ flush_interval -1
 }
 }
 
-# 8. demogpt.585dg.com
-# demogpt.585dg.com {
-#     #tls /etc/letsencrypt/live/demogpt.585dg.com/fullchain.pem /etc/letsencrypt/live/demogpt.585dg.com/privkey.pem
-
-#     @acme_challenge {
-#         path /.well-known/acme-challenge/*
-#     }
-#     handle @acme_challenge {
-#         root * /var/www/html
-#         file_server
-#     }
-
-#     reverse_proxy https://chat.soruxgpt.com {
-#         header_up Host chat.soruxgpt.com
-#         header_up X-Real-IP {remote_host}
-#         header_up X-Forwarded-For {remote_host}
-#         header_up X-Forwarded-Proto {scheme}
-#         header_up Upgrade {header.Upgrade}
-#         header_up Connection "upgrade"
-#         transport http {
-#             #tls
-#             #tls_server_name chat.soruxgpt.com
-#             versions h1, h2
-#         }
-#         flush_interval -1
-#     }
-# }
-
-
-# 8.1 this is a newly created domain https://chat.585dg.com/
-
-
-# http://chat.585dg.com {
-#     # Caddy会自动申请和管理证书，不需要手动指定证书路径
-#     replace "SoruxGPT 登录" "GPT 登录"
-#     replace "SoruxGPT 账号" "GPT 账号"
-#     replace "SoruxGPT 密码" "GPT 密码"
-#     replace "Hello, SoruxGPT!" "Hello, GPT!"
-#     replace "default-mail@soruxgpt.com" "default-mail@gpt.com"
-#     replace "SoruxGPT.com User" "GPT.com User"
-#     reverse_proxy {
-#         to https://liuli-chatgpt.soruxgpt.com 
-#         header_up Host liuli-chatgpt.soruxgpt.com
-#         transport http {
-#             tls
-#             tls_insecure_skip_verify
-#         }
-#     }
-
-# }
-
-# https://chat.585dg.com {
-#     # Caddy会自动申请和管理证书，不需要手动指定证书路径
-#     replace "SoruxGPT 登录" "GPT 登录"
-#     replace "SoruxGPT 账号" "GPT 账号"
-#     replace "SoruxGPT 密码" "GPT 密码"
-#     replace "Hello, SoruxGPT!" "Hello, GPT!"
-#     replace "default-mail@soruxgpt.com" "default-mail@gpt.com"
-#     replace "SoruxGPT.com User" "GPT.com User"
-#     reverse_proxy {
-#         to https://liuli-chatgpt.soruxgpt.com 
-#         header_up Host liuli-chatgpt.soruxgpt.com
-#         transport http {
-#             tls
-#             tls_insecure_skip_verify
-#         }
-#     }
-
-# }
-
-
-# HTTP配置
-# http://chat.585dg.com {
-#     replace "SoruxGPT 登录" "GPT 登录"
-#     replace "SoruxGPT 账号" "GPT 账号"
-#     replace "SoruxGPT 密码" "GPT 密码"
-#     replace "Hello, SoruxGPT!" "Hello, GPT!"
-#     replace "default-mail@soruxgpt.com" "default-mail@gpt.com"
-#     replace "SoruxGPT.com User" "GPT.com User"
-#     reverse_proxy {
-#         to https://liuli-chatgpt.soruxgpt.com 
-#         header_up Host liuli-chatgpt.soruxgpt.com
-#         transport http {
-#             tls
-#             tls_insecure_skip_verify
-#         }
-#     }
-# }
-# https://chat.585dg.com {
-#     replace "SoruxGPT 登录" "GPT 登录"
-#     replace "SoruxGPT 账号" "GPT 账号"
-#     replace "SoruxGPT 密码" "GPT 密码"
-#     replace "Hello, SoruxGPT!" "Hello, GPT!"
-#     replace "default-mail@soruxgpt.com" "default-mail@gpt.com"
-#     replace "SoruxGPT.com User" "GPT.com User"
-#     reverse_proxy {
-#         to https://liuli-chatgpt.soruxgpt.com 
-#         header_up Host liuli-chatgpt.soruxgpt.com
-#         transport http {
-#             tls
-#             tls_insecure_skip_verify
-#         }
-#     }
-# }
-
-# # HTTP 配置
-# http://chat.585dg.com {
-#     redir https://{host}{uri} permanent
-# }
-
-# # HTTPS 配置
-# https://chat.585dg.com {
-#     replace "SoruxGPT 登录" "GPT 登录"
-#     replace "SoruxGPT 账号" "GPT 账号"
-#     replace "SoruxGPT 密码" "GPT 密码"
-#     replace "Hello, SoruxGPT!" "Hello, GPT!"
-#     replace "default-mail@soruxgpt.com" "email"
-#     replace "SoruxGPT.com User" "User"
-
-#     reverse_proxy {
-#         to https://liuli-chatgpt.soruxgpt.com 
-#         header_up Host liuli-chatgpt.soruxgpt.com
-#         transport http {
-#             tls
-#             tls_insecure_skip_verify
-#         }
-#     }
-# }
-
-
 
 http://clauO1.585dg.com  {
     redir https://{host}{uri}
@@ -1645,6 +1515,9 @@ http://newapi.585dg.com {
 }
 
 https://newapi.585dg.com {
+    replace {
+"videos.openai.com" "videos.qqyunsd.com"
+}
     handle {
         reverse_proxy http://54.254.143.80:3000 {
             header_up Host {host}
