@@ -18,7 +18,11 @@ redir https://{host}{uri} permanent
 }
 
 https://chatai.qqyunsd.com {
-replace {
+@notapi {
+not path /backend-api/conversation
+}
+
+replace @notapi {
 "videos.openai.com" "videos.qqyunsd.com"
 }
 reverse_proxy http://52.221.142.198:8508 {
