@@ -34,6 +34,7 @@ header {
 }
 reverse_proxy http://52.221.142.198:8508 {
 header_up Host soruxgpt-saas-liuli.soruxgpt.com
+header_up Accept-Encoding identity  # 禁用上游服务器的压缩
 header_up myhost {http.request.host}
 header_up Upgrade {header.Upgrade}
 header_up Connection "upgrade"
