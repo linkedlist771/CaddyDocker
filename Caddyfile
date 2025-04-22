@@ -1482,9 +1482,9 @@ http://newapi.585dg.com {
 }
 
 https://newapi.585dg.com {
-    replace {
-"videos.openai.com" "videos.qqyunsd.com"
-}
+# replace {
+# "videos.openai.com" "videos.qqyunsd.com"
+# }
     handle {
         reverse_proxy http://54.254.143.80:3000 {
             header_up Host {host}
