@@ -235,6 +235,65 @@ https://clauO1.585dg.com  {
     reverse_proxy http://54.254.143.80:8500
 }
 
+
+
+http://o1pro.585dg.com  {
+    redir https://{host}{uri}
+}
+
+https://o1pro.585dg.com  {
+    handle /api/* {
+        reverse_proxy http://54.254.143.80:8600 {
+            header_up Host {host}
+            header_up X-Real-IP {remote_host}
+            header_up X-Forwarded-For {remote_host}
+            header_up REMOTE-HOST {remote_host}
+        }
+    }
+
+   handle /app/* {
+        reverse_proxy http://54.254.143.80:8600
+        }
+  
+   redir /list /list/
+   handle_path /list/* {
+       rewrite *  /app/index.html
+       reverse_proxy http://54.254.143.80:8600
+   }
+
+    reverse_proxy http://54.254.143.80:8500
+}
+
+
+
+http://o1pro.qqyunsd.com  {
+    redir https://{host}{uri}
+}
+
+https://o1pro.qqyunsd.com  {
+    handle /api/* {
+        reverse_proxy http://54.254.143.80:8600 {
+            header_up Host {host}
+            header_up X-Real-IP {remote_host}
+            header_up X-Forwarded-For {remote_host}
+            header_up REMOTE-HOST {remote_host}
+        }
+    }
+
+   handle /app/* {
+        reverse_proxy http://54.254.143.80:8600
+        }
+  
+   redir /list /list/
+   handle_path /list/* {
+       rewrite *  /app/index.html
+       reverse_proxy http://54.254.143.80:8600
+   }
+
+    reverse_proxy http://54.254.143.80:8500
+}
+
+
 http://chat.585dg.com {
 redir https://{host}{uri} permanent
 }
