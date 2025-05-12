@@ -982,7 +982,11 @@ redir https://{host}{uri} permanent
 }
 
 https://chatai.qqyunsd.com {
-    {
+@notapi {
+not path /backend-api/conversation
+}
+
+replace @notapi {
 "videos.openai.com" "videos.qqyunsd.com"
 }
 reverse_proxy http://54.254.143.80:8508 {
@@ -993,7 +997,9 @@ reverse_proxy http://54.254.143.80:8508 {
 }
 
 
+
 }
+
 
 # {
 # @notapi {
