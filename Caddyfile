@@ -25,7 +25,7 @@ not path /backend-api/conversation
 replace @notapi {
 "videos.openai.com" "videos.qqyunsd.com"
 }
-reverse_proxy http://52.221.142.198:8508 {
+reverse_proxy http://54.254.143.80:8508  {
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
     header_up myhost {http.request.host}
     header_up Accept-Encoding identity  # 禁用上游服务器的压缩
