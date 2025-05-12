@@ -955,7 +955,7 @@ http://chat.qqyunsd.com {
 redir https://{host}{uri} permanent
 }
 
-chatai.qqyunsd.com {
+chat.qqyunsd.com {
 @notapi {
 not path /backend-api/conversation
 }
