@@ -241,74 +241,74 @@ https://revpoe.qqyunsd.com {
 
 }
 
-http://orig.aigc.tikeai.com {
-redir https://{host}{uri} permanent
-}
+# http://orig.aigc.tikeai.com {
+# redir https://{host}{uri} permanent
+# }
 
-https://orig.aigc.tikeai.com {
-@notapi {
-not path /backend-api/conversation
-}
-# 添加CORS支持 - 处理预检请求
-@options {
-    method OPTIONS
-}
-respond @options 204
+# https://orig.aigc.tikeai.com {
+# @notapi {
+# not path /backend-api/conversation
+# }
+# # 添加CORS支持 - 处理预检请求
+# @options {
+#     method OPTIONS
+# }
+# respond @options 204
 
-# 添加CORS头部 - 允许所有域访问
-header {
-    Access-Control-Allow-Origin *
-    Access-Control-Allow-Methods GET,POST,PUT,DELETE,OPTIONS
-    Access-Control-Allow-Headers *
-    Access-Control-Max-Age 3600
-    Access-Control-Expose-Headers Set-Cookie  # 这是新添加的行，允许前端访问Set-Cookie头
+# # 添加CORS头部 - 允许所有域访问
+# header {
+#     Access-Control-Allow-Origin *
+#     Access-Control-Allow-Methods GET,POST,PUT,DELETE,OPTIONS
+#     Access-Control-Allow-Headers *
+#     Access-Control-Max-Age 3600
+#     Access-Control-Expose-Headers Set-Cookie  # 这是新添加的行，允许前端访问Set-Cookie头
 
-}
+# }
 
-reverse_proxy http://52.221.142.198:5001 {
-header_up Host {host}
-header_up Upgrade {header.Upgrade}
-header_up Connection "upgrade"
-transport http {
-versions h1
-}
-}
-}
+# reverse_proxy http://52.221.142.198:5001 {
+# header_up Host {host}
+# header_up Upgrade {header.Upgrade}
+# header_up Connection "upgrade"
+# transport http {
+# versions h1
+# }
+# }
+# }
 
 
-http://aigc.tikeai.com {
-redir https://{host}{uri} permanent
-}
+# http://aigc.tikeai.com {
+# redir https://{host}{uri} permanent
+# }
 
-https://aigc.tikeai.com {
-@notapi {
-not path /backend-api/conversation
-}
-# 添加CORS支持 - 处理预检请求
-@options {
-    method OPTIONS
-}
-respond @options 204
+# https://aigc.tikeai.com {
+# @notapi {
+# not path /backend-api/conversation
+# }
+# # 添加CORS支持 - 处理预检请求
+# @options {
+#     method OPTIONS
+# }
+# respond @options 204
 
-# 添加CORS头部 - 允许所有域访问
-header {
-    Access-Control-Allow-Origin *
-    Access-Control-Allow-Methods GET,POST,PUT,DELETE,OPTIONS
-    Access-Control-Allow-Headers *
-    Access-Control-Max-Age 3600
-    Access-Control-Expose-Headers Set-Cookie  # 这是新添加的行，允许前端访问Set-Cookie头
+# # 添加CORS头部 - 允许所有域访问
+# header {
+#     Access-Control-Allow-Origin *
+#     Access-Control-Allow-Methods GET,POST,PUT,DELETE,OPTIONS
+#     Access-Control-Allow-Headers *
+#     Access-Control-Max-Age 3600
+#     Access-Control-Expose-Headers Set-Cookie  # 这是新添加的行，允许前端访问Set-Cookie头
 
-}
+# }
 
-reverse_proxy http://52.221.142.198:5001 {
-header_up Host {host}
-header_up Upgrade {header.Upgrade}
-header_up Connection "upgrade"
-transport http {
-versions h1
-}
-}
-}
+# reverse_proxy http://52.221.142.198:5001 {
+# header_up Host {host}
+# header_up Upgrade {header.Upgrade}
+# header_up Connection "upgrade"
+# transport http {
+# versions h1
+# }
+# }
+# }
 
 # # 反代openai的video出图
 # http://videos.qqyunsd.com {
@@ -364,6 +364,17 @@ http://api-store.store {
 }
 
 https://api-store.store {
+    reverse_proxy {
+        to http://52.221.142.198:911
+    }
+}
+
+# 
+http://jacob.585dg.com {
+    redir https://{host}{uri} permanent
+}
+
+https://jacob.585dg.com {
     reverse_proxy {
         to http://52.221.142.198:911
     }
