@@ -1106,7 +1106,7 @@ health_timeout 5s
 
 
 http://poe.qqyunsd.com {
-reverse_proxy http://54.254.143.80:1441 {
+reverse_proxy http://54.254.143.80:8510 {
 header_up Host {host}
 header_up X-Real-IP {remote_host}
 header_up X-Forwarded-Proto {scheme}
@@ -1124,7 +1124,7 @@ health_timeout 5s
 }
 
 https://poe.qqyunsd.com {
-reverse_proxy http://54.254.143.80:1441 {
+reverse_proxy http://54.254.143.80:8510 {
 header_up Host {host}
 header_up X-Real-IP {remote_host}
 header_up X-Forwarded-Proto {scheme}
