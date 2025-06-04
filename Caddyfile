@@ -751,7 +751,7 @@ redir https://{host}{uri}
 
 
  https://o1.585dg.com {
-reverse_proxy http://54.254.143.80:5400 {
+reverse_proxy http://54.254.143.80:8400 {
 header_up Host {host}
 header_up X-Real-IP {remote_host}
 header_up X-Forwarded-Proto {scheme}
@@ -777,7 +777,7 @@ redir https://{host}{uri}
 
 
  https://claubei.585dg.com {
-reverse_proxy http://54.254.143.80:8400 {
+reverse_proxy http://54.254.143.80:5400 {
 header_up Host {host}
 header_up X-Real-IP {remote_host}
 header_up X-Forwarded-Proto {scheme}
