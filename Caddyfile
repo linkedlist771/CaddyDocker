@@ -293,31 +293,51 @@ https://o1pro.qqyunsd.com  {
     reverse_proxy http://54.254.143.80:8500
 }
 
-http://o1pro.qqyunsdtest.com  {
+http://o1protest.qqyunsd.com  {
     redir https://{host}{uri}
 }
 
-https://o1pro.qqyunsdtest.com  {
-    handle /api/* {
-        reverse_proxy http://54.254.143.80:8600 {
-            header_up Host {host}
-            header_up X-Real-IP {remote_host}
-            header_up X-Forwarded-For {remote_host}
-            header_up REMOTE-HOST {remote_host}
+https://o1protest.qqyunsd.com  {
+        handle /app/* {
+                reverse_proxy localhost:7600
         }
+        redir /expander /expander/
+        handle /expander/* {
+                reverse_proxy localhost:7600
+        }
+
+        redir /list /list/
+        handle /list/* {
+                rewrite * /app/index.html
+                reverse_proxy localhost:7600
+        }
+
+        handle /expander-api/* {
+                reverse_proxy localhost:7600 {
+                        header_up Host {host}
+                        header_up X-Real-IP {remote_host}
+                        header_up REMOTE-HOST {remote_host}
+                }
+        }
+        handle /api/* {
+                reverse_proxy localhost:7600 {
+                        header_up Host {host}
+                        header_up X-Real-IP {remote_host}
+                        header_up REMOTE-HOST {remote_host}
+                }
+        }
+        handle /client-api/* {
+                reverse_proxy localhost:7600 {
+                        header_up Host {host}
+                        header_up X-Real-IP {remote_host}
+                        header_up REMOTE-HOST {remote_host}
+                }
+        }
+        # 将 reverse_proxy 移到 handle 块中，处理未匹配的路径
+    # 默认处理 - 修正语法错误
+    handle {
+        reverse_proxy 54.254.143.80:7500
     }
-
-   handle /app/* {
-        reverse_proxy http://54.254.143.80:8600
-        }
-  
-   redir /list /list/
-   handle_path /list/* {
-       rewrite *  /app/index.html
-       reverse_proxy http://54.254.143.80:8600
-   }
-
-    reverse_proxy http://54.254.143.80:8500
 }
 
 
