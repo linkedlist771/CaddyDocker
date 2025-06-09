@@ -233,36 +233,37 @@ https://clauO1.585dg.com  {
 #    }
 
 #     reverse_proxy http://54.254.143.80:8500
-        handle /app/* {
-                reverse_proxy localhost:8600
+    handle /app/* {
+        reverse_proxy http://54.254.143.80:8600
         }
+  
         redir /expander /expander/
         handle /expander/* {
-                reverse_proxy localhost:8600
+        reverse_proxy http://54.254.143.80:8600
         }
 
         redir /list /list/
         handle /list/* {
                 rewrite * /app/index.html
-                reverse_proxy localhost:8600
+        reverse_proxy http://54.254.143.80:8600
         }
 
         handle /expander-api/* {
-                reverse_proxy localhost:8600 {
+                 reverse_proxy http://54.254.143.80:8600 {
                         header_up Host {host}
                         header_up X-Real-IP {remote_host}
                         header_up REMOTE-HOST {remote_host}
                 }
         }
         handle /api/* {
-                reverse_proxy localhost:8600 {
+                 reverse_proxy http://54.254.143.80:8600 {
                         header_up Host {host}
                         header_up X-Real-IP {remote_host}
                         header_up REMOTE-HOST {remote_host}
                 }
         }
         handle /client-api/* {
-                reverse_proxy localhost:8600 {
+                 reverse_proxy http://54.254.143.80:8600 {
                         header_up Host {host}
                         header_up X-Real-IP {remote_host}
                         header_up REMOTE-HOST {remote_host}
