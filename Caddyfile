@@ -379,3 +379,13 @@ https://jacob.585dg.com {
         to http://52.221.142.198:911
     }
 }
+
+http://promptagent.qqyunsd.com {
+    redir https://{host}{uri} permanent
+}
+
+https://promptagent.qqyunsd.com {
+    reverse_proxy {
+        to http://52.221.142.198:3648
+    }
+}
