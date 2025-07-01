@@ -1023,7 +1023,9 @@ redir https://{host}{uri} permanent
 }
 
 gptube.cn {
-
+    tls {
+        ca https://acme-v02.api.letsencrypt.org/directory
+    }
 reverse_proxy http://54.254.143.80:8508 {
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
     header_up myhost {http.request.host}
