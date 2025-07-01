@@ -5,8 +5,6 @@
     # auto_https disable_redirects
     # 可选: 配置邮箱用于 Let's Encrypt 通知
     email 213193509seu@gmail.com
-    acme_ca https://acme-v02.api.letsencrypt.org/directory
-
 }
 
 # # ACME challenge handling for HTTP
