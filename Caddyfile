@@ -2,16 +2,16 @@
     order replace after encode
 
     # Global options
-    auto_https disable_redirects
+    # auto_https disable_redirects
     # 可选: 配置邮箱用于 Let's Encrypt 通知
     email 213193509seu@gmail.com
 }
 
-# ACME challenge handling for HTTP
-:80 {
-root * /var/www/html
-file_server
-}
+# # ACME challenge handling for HTTP
+# :80 {
+# root * /var/www/html
+# file_server
+# }
 
 # 1. claude3.ucas.life
 claude3.ucas.life {
@@ -134,29 +134,6 @@ flush_interval -1
 health_timeout 5s
 }
  }
-
-# 5. claude.liuli.arelay.com
-# claude.liuli.arelay.com {
-# #tls /etc/letsencrypt/live/claude.liuli.mmwcy.cn/fullchain.pem /etc/letsencrypt/live/claude.liuli.mmwcy.cn/privkey.pem
-
-# @acme_challenge {
-# path /.well-known/acme-challenge/*
-# }
-# handle @acme_challenge {
-# root * /var/www/html
-# file_server
-# }
-
-# reverse_proxy http://54.254.143.80:1341 {
-# header_up Host {host}
-# header_up Upgrade {header.Upgrade}
-# header_up Connection "upgrade"
-# transport http {
-# versions h1
-# }
-# flush_interval -1
-# }
-# }
 
 
 
@@ -383,31 +360,7 @@ reverse_proxy http://54.254.143.80:8508 {
 
 
 
-# http://aigo1.585dg.com {
-# redir https://{host}{uri} permanent
-# }
 
-# aigo1.585dg.com {
-# @notapi {
-# not path /backend-api/conversation
-# }
-
-# replace @notapi {
-# "SoruxGPT 登录" "GPT 登录"
-# "SoruxGPT 账号" "GPT 账号"
-# "SoruxGPT 密码" "GPT 密码"
-# "Hello, SoruxGPT!" "Hello, GPT!"
-# "default-mail@soruxgpt.com" "email"
-# "SoruxGPT.com User" "User"
-# "Powered By SoruxGPT" "Powered By GPT"
-# "前往 SoruxGPT 注册" "前往 GPT 注册"
-# }
-# reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
-#     header_up Host soruxgpt-saas-liuli.soruxgpt.com
-#     header_up myhost {http.request.host}
-#     header_up Accept-Encoding identity  # 禁用上游服务器的压缩
-# }
-# }
 
 
 http://aigo1.585dg.com {
@@ -1358,29 +1311,6 @@ redir https://{host}{uri}
 }
 
 
-# # 14. api.claude35.585dg.com
-# api.claude35.585dg.com {
-# #tls /etc/letsencrypt/live/api.claude35.585dg.com/fullchain.pem /etc/letsencrypt/live/api.claude35.585dg.com/privkey.pem
-
-# @acme_challenge {
-# path /.well-known/acme-challenge/*
-# }
-# handle @acme_challenge {
-# root * /var/www/html
-# file_server
-# }
-
-# reverse_proxy http://54.254.143.80:1145 {
-# header_up Host {host}
-# header_up Upgrade {header.Upgrade}
-# header_up Connection "upgrade"
-# transport http {
-# versions h1
-# }
-# flush_interval -1
-# }
-# }
-
 
 api.claude35.585dg.com {
 reverse_proxy http://54.254.143.80:1145 {
@@ -1527,28 +1457,28 @@ health_timeout 5s
 #     }
 # }
 
-# 16. api.poe.585dg.com
-api.poe.585dg.com {
-#tls /etc/letsencrypt/live/api.poe.585dg.com/fullchain.pem /etc/letsencrypt/live/api.poe.585dg.com/privkey.pem
+# 16. api.poe.585dg.com No use
+# api.poe.585dg.com {
+# #tls /etc/letsencrypt/live/api.poe.585dg.com/fullchain.pem /etc/letsencrypt/live/api.poe.585dg.com/privkey.pem
 
-@acme_challenge {
-path /.well-known/acme-challenge/*
-}
-handle @acme_challenge {
-root * /var/www/html
-file_server
-}
+# @acme_challenge {
+# path /.well-known/acme-challenge/*
+# }
+# handle @acme_challenge {
+# root * /var/www/html
+# file_server
+# }
 
-reverse_proxy http://54.254.143.80:8000 {
-header_up Host {host}
-header_up Upgrade {header.Upgrade}
-header_up Connection "upgrade"
-transport http {
-versions h1
-}
-flush_interval -1
-}
-}
+# reverse_proxy http://54.254.143.80:8000 {
+# header_up Host {host}
+# header_up Upgrade {header.Upgrade}
+# header_up Connection "upgrade"
+# transport http {
+# versions h1
+# }
+# flush_interval -1
+# }
+# }
 
 # 17. shop.liuligpt.space
 shop.liuligpt.space {
