@@ -358,6 +358,41 @@ versions h1
 }
 }
 
+
+http://cdnimages.qqyunsd.com {
+redir https://{host}{uri} permanent
+}
+
+https://cdnimages.qqyunsd.com {
+@notapi {
+not path /backend-api/conversation
+}
+# 添加CORS支持 - 处理预检请求
+@options {
+    method OPTIONS
+}
+respond @options 204
+
+# 添加CORS头部 - 允许所有域访问
+header {
+    Access-Control-Allow-Origin *
+    Access-Control-Allow-Methods GET,POST,PUT,DELETE,OPTIONS
+    Access-Control-Allow-Headers *
+    Access-Control-Max-Age 3600
+    Access-Control-Expose-Headers Set-Cookie  # 这是新添加的行，允许前端访问Set-Cookie头
+
+}
+
+reverse_proxy http://52.221.142.198:8511 {
+header_up Host {host}
+header_up Upgrade {header.Upgrade}
+header_up Connection "upgrade"
+transport http {
+versions h1
+}
+}
+}
+
 # 额外的商场反代
 http://api-store.store {
     redir https://{host}{uri} permanent
