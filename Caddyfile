@@ -347,10 +347,11 @@ not path /backend-api/conversation
 replace @notapi {
 "videos.openai.com" "videos.qqyunsd.com"
 }
-reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
+reverse_proxy http://54.254.143.80:8508 {
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
     header_up myhost {http.request.host}
     header_up Accept-Encoding identity  # 禁用上游服务器的压缩
+
 }
 
 
@@ -374,10 +375,11 @@ not path /backend-api/conversation
 replace @notapi {
 "videos.openai.com" "videos.qqyunsd.com"
 }
-reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
+reverse_proxy http://54.254.143.80:8508 {
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
     header_up myhost {http.request.host}
     header_up Accept-Encoding identity  # 禁用上游服务器的压缩
+
 }
 
 
@@ -398,10 +400,11 @@ not path /backend-api/conversation
 replace @notapi {
 "videos.openai.com" "videos.qqyunsd.com"
 }
-reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
+reverse_proxy http://54.254.143.80:8508 {
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
     header_up myhost {http.request.host}
     header_up Accept-Encoding identity  # 禁用上游服务器的压缩
+
 }
 
 
@@ -1003,10 +1006,11 @@ not path /backend-api/conversation
 replace @notapi {
 "videos.openai.com" "videos.qqyunsd.com"
 }
-reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
+reverse_proxy http://54.254.143.80:8508 {
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
     header_up myhost {http.request.host}
     header_up Accept-Encoding identity  # 禁用上游服务器的压缩
+
 }
 
 
@@ -1045,10 +1049,11 @@ not path /backend-api/conversation
 replace @notapi {
 "videos.openai.com" "videos.qqyunsd.com"
 }
-reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
+reverse_proxy http://54.254.143.80:8508 {
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
     header_up myhost {http.request.host}
     header_up Accept-Encoding identity  # 禁用上游服务器的压缩
+
 }
 
 
