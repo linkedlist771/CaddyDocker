@@ -345,7 +345,14 @@ not path /backend-api/conversation
 }
 
 replace @notapi {
-"videos.openai.com" "videos.qqyunsd.com"
+"SoruxGPT 登录" "GPT 登录"
+"SoruxGPT 账号" "GPT 账号"
+"SoruxGPT 密码" "GPT 密码"
+"Hello, SoruxGPT!" "Hello, GPT!"
+"default-mail@soruxgpt.com" "email"
+"SoruxGPT.com User" "User"
+"Powered By SoruxGPT" "Powered By GPT"
+"前往 SoruxGPT 注册" "前往 GPT 注册"
 }
 reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
@@ -372,7 +379,14 @@ not path /backend-api/conversation
 }
 
 replace @notapi {
-"videos.openai.com" "videos.qqyunsd.com"
+"SoruxGPT 登录" "GPT 登录"
+"SoruxGPT 账号" "GPT 账号"
+"SoruxGPT 密码" "GPT 密码"
+"Hello, SoruxGPT!" "Hello, GPT!"
+"default-mail@soruxgpt.com" "email"
+"SoruxGPT.com User" "User"
+"Powered By SoruxGPT" "Powered By GPT"
+"前往 SoruxGPT 注册" "前往 GPT 注册"
 }
 reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
@@ -396,7 +410,14 @@ not path /backend-api/conversation
 }
 
 replace @notapi {
-"videos.openai.com" "videos.qqyunsd.com"
+"SoruxGPT 登录" "GPT 登录"
+"SoruxGPT 账号" "GPT 账号"
+"SoruxGPT 密码" "GPT 密码"
+"Hello, SoruxGPT!" "Hello, GPT!"
+"default-mail@soruxgpt.com" "email"
+"SoruxGPT.com User" "User"
+"Powered By SoruxGPT" "Powered By GPT"
+"前往 SoruxGPT 注册" "前往 GPT 注册"
 }
 reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
@@ -1001,7 +1022,14 @@ not path /backend-api/conversation
 }
 
 replace @notapi {
-"videos.openai.com" "videos.qqyunsd.com"
+"SoruxGPT 登录" "GPT 登录"
+"SoruxGPT 账号" "GPT 账号"
+"SoruxGPT 密码" "GPT 密码"
+"Hello, SoruxGPT!" "Hello, GPT!"
+"default-mail@soruxgpt.com" "email"
+"SoruxGPT.com User" "User"
+"Powered By SoruxGPT" "Powered By GPT"
+"前往 SoruxGPT 注册" "前往 GPT 注册"
 }
 reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
@@ -1043,7 +1071,14 @@ not path /backend-api/conversation
 }
 
 replace @notapi {
-"videos.openai.com" "videos.qqyunsd.com"
+"SoruxGPT 登录" "GPT 登录"
+"SoruxGPT 账号" "GPT 账号"
+"SoruxGPT 密码" "GPT 密码"
+"Hello, SoruxGPT!" "Hello, GPT!"
+"default-mail@soruxgpt.com" "email"
+"SoruxGPT.com User" "User"
+"Powered By SoruxGPT" "Powered By GPT"
+"前往 SoruxGPT 注册" "前往 GPT 注册"
 }
 reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
     header_up Host soruxgpt-saas-liuli.soruxgpt.com
