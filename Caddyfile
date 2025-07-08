@@ -1,9 +1,7 @@
 {
     order replace after encode
 
-    # Global options
-    # auto_https disable_redirects
-    # 可选: 配置邮箱用于 Let's Encrypt 通知
+
     email 213193509seu@gmail.com
 }
 
@@ -24,14 +22,15 @@ reverse_proxy https://claudetest.585dg.com {
 
 
 http://chattest.qqyunsd.com {
-redir https://{host}{uri} permanent
+    redir https://{host}{uri} permanent
 }
 
 https://chattest.qqyunsd.com {
-
-
-reverse_proxy https://claudetest.585dg.com {
-
-}
-
+    reverse_proxy https://claudetest.585dg.com {
+        header_up Host {upstream_hostport}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+        header_up User-Agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    }
 }
