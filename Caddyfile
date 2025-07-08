@@ -1765,45 +1765,84 @@ reverse_proxy https://soruxgpt-saas-liuli.soruxgpt.com {
 
 
 
-http://claude.gptbest.vip  {
-reverse_proxy http://54.254.143.80:8300 {
-header_up Host {host}
-header_up X-Real-IP {remote_host}
-header_up X-Forwarded-Proto {scheme}
-header_up X-Forwarded-For {remote_host}
-header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
-header_up CF-Ray {http.request.header.CF-Ray}
-header_up Upgrade {header.Upgrade}
-header_up Connection "upgrade"
-transport http {
-versions h1
+# http://claude.gptbest.vip  {
+# reverse_proxy http://54.254.143.80:8300 {
+# header_up Host {host}
+# header_up X-Real-IP {remote_host}
+# header_up X-Forwarded-Proto {scheme}
+# header_up X-Forwarded-For {remote_host}
+# header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
+# header_up CF-Ray {http.request.header.CF-Ray}
+# header_up Upgrade {header.Upgrade}
+# header_up Connection "upgrade"
+# transport http {
+# versions h1
+# }
+# flush_interval -1
+# health_timeout 5s
+# }
+#  }
+
+
+
+#  https://claude.gptbest.vip {
+# reverse_proxy http://54.254.143.80:8300 {
+# header_up Host {host}
+# header_up X-Real-IP {remote_host}
+# header_up X-Forwarded-Proto {scheme}
+# header_up X-Forwarded-For {remote_host}
+# header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
+# header_up CF-Ray {http.request.header.CF-Ray}
+# header_up Upgrade {header.Upgrade}
+# header_up Connection "upgrade"
+# transport http {
+# versions h1
+# }
+# flush_interval -1
+# health_timeout 5s
+# }
+#  }
+
+
+http://claude.gptbest.vip {
+    reverse_proxy https://clauai.qqyunsd.com {
+        header_up Host {upstream_hostport}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+        header_up X-Forwarded-For {remote_host}
+        header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
+        header_up CF-Ray {http.request.header.CF-Ray}
+        header_up Upgrade {header.Upgrade}
+        header_up Connection "upgrade"
+        transport http {
+            versions h1
+            tls
+            tls_insecure_skip_verify
+        }
+        flush_interval -1
+        health_timeout 5s
+    }
 }
-flush_interval -1
-health_timeout 5s
+
+https://claude.gptbest.vip {
+    reverse_proxy https://clauai.qqyunsd.com {
+        header_up Host {upstream_hostport}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+        header_up X-Forwarded-For {remote_host}
+        header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
+        header_up CF-Ray {http.request.header.CF-Ray}
+        header_up Upgrade {header.Upgrade}
+        header_up Connection "upgrade"
+        transport http {
+            versions h1
+            tls
+            tls_insecure_skip_verify
+        }
+        flush_interval -1
+        health_timeout 5s
+    }
 }
- }
-
-
-
- https://claude.gptbest.vip {
-reverse_proxy http://54.254.143.80:8300 {
-header_up Host {host}
-header_up X-Real-IP {remote_host}
-header_up X-Forwarded-Proto {scheme}
-header_up X-Forwarded-For {remote_host}
-header_up CF-Connecting-IP {http.request.header.CF-Connecting-IP}
-header_up CF-Ray {http.request.header.CF-Ray}
-header_up Upgrade {header.Upgrade}
-header_up Connection "upgrade"
-transport http {
-versions h1
-}
-flush_interval -1
-health_timeout 5s
-}
- }
-
-
 
 
 # 27. 新增claudedirect.585dg.com配置
