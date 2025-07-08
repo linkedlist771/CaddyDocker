@@ -13,22 +13,11 @@ redir https://{host}{uri} permanent
 }
 
 https://clauo1test.585dg.com {
-@notapi {
-not path /backend-api/conversation
-}
 
 
-# reverse_proxy {
-#             to http://liuli-chatgpt.soruxgpt.23.158.72.168.nip.io:32500
-#             # header_up Accept-Encoding identity     
-#                 header_up myhost {http.request.host}
-#     header_up Accept-Encoding identity  # 禁用上游服务器的压缩
-# }
 
 reverse_proxy https://aiclau.585dg.com {
-    # header_up Host soruxgpt-saas-liuli.soruxgpt.com
-    # header_up myhost {http.request.host}
-    # header_up Accept-Encoding identity  # 禁用上游服务器的压缩
+
 }
 
 }
