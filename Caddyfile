@@ -19,5 +19,19 @@ https://clauo1test.585dg.com {
 reverse_proxy https://aiclau.585dg.com {
 
 }
+}
+
+
+
+http://chattest.qqyunsd.com {
+redir https://{host}{uri} permanent
+}
+
+https://chattest.qqyunsd.com {
+
+
+reverse_proxy https://aiclau.585dg.com {
+
+}
 
 }
