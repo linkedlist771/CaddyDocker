@@ -6,20 +6,6 @@
 }
 
 
-http://clauo1test.585dg.com {
-redir https://{host}{uri} permanent
-}
-
-https://clauo1test.585dg.com {
-
-
-
-reverse_proxy https://claudetest.585dg.com {
-
-}
-}
-
-
 
 http://chattest.qqyunsd.com {
     redir https://{host}{uri} permanent
@@ -31,6 +17,5 @@ https://chattest.qqyunsd.com {
         header_up X-Real-IP {remote_host}
         header_up X-Forwarded-For {remote_host}
         header_up X-Forwarded-Proto {scheme}
-        header_up User-Agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }
 }
