@@ -19,3 +19,19 @@ https://chattest.qqyunsd.com {
         header_up X-Forwarded-Proto {scheme}
     }
 }
+
+
+# claude.gptbest.vip
+
+http://claude.gptbest.vip {
+    redir https://{host}{uri} permanent
+}
+
+https://claude.gptbest.vip {
+    reverse_proxy https://aiclau.585dg.com {
+        header_up Host {upstream_hostport}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+    }
+}
