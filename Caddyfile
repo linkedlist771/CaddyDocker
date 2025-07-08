@@ -16,7 +16,7 @@ https://clauo1test.585dg.com {
 
 
 
-reverse_proxy http://claudetest.585dg.com {
+reverse_proxy https://claudetest.585dg.com {
 
 }
 }
@@ -30,7 +30,7 @@ redir https://{host}{uri} permanent
 https://chattest.qqyunsd.com {
 
 
-reverse_proxy http://claudetest.585dg.com {
+reverse_proxy https://claudetest.585dg.com {
 
 }
 
